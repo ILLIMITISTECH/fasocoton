@@ -3,6 +3,7 @@
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
       @include('Admin/Dashboard.headUser')
+     
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
@@ -24,26 +25,36 @@
                               <th>Libellé </th>
                               <th> Date </th>
                               <th class="text-center"> Heure </th>
-                              <th class="text-center"> Format</th>
                               <th class="text-center"> Lien zoom</th>
+
+                              <th class="text-center"> Duration </th>
                               <th class="text-center"> Options</th>
                             </tr>
                           </thead>
                           <tbody>
+                           @foreach($activites as $activite)
                             <tr>
-                              <td></td>
+                              <td>{{$activite->libelle}}</td>
                               <td>
+                              {{$activite->date}}
                               </td>
                               <td class="text-center">
+                              {{$activite->heure_debut}}  {{$activite->heure_fin}}
                               </td>
+  
+                              <td class="text-center"> 
+                              <a href="{{$activite->join_url}}" class="btn  btn-sm"style="background:#0D71EB;color:white">Join</a>
+                              </td>
+                             
                               <td class="text-center">
+                              {{$activite->duration}}H
                               </td>
-                              <td></td>
                               <td class="text-center"> 
                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
                                 <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
                               </td>
                             </tr>
+                            @endforeach
                           </tbody>
                         </table>
                       </div>
@@ -51,6 +62,8 @@
                   </div>
                 </div>
               </div>
+    
+         
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->

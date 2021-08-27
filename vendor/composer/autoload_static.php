@@ -529,6 +529,7 @@ class ComposerStaticInit289ea77b73cc311de56c3ddb67f1fa2c
         'App\\Http\\Controllers\\FacilitateurController' => __DIR__ . '/../..' . '/app/Http/Controllers/FacilitateurController.php',
         'App\\Http\\Controllers\\HotelController' => __DIR__ . '/../..' . '/app/Http/Controllers/HotelController.php',
         'App\\Http\\Controllers\\IndisponibiliteParticipantController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndisponibiliteParticipantController.php',
+        'App\\Http\\Controllers\\InscriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/InscriptionController.php',
         'App\\Http\\Controllers\\IntervenantController' => __DIR__ . '/../..' . '/app/Http/Controllers/IntervenantController.php',
         'App\\Http\\Controllers\\LangueController' => __DIR__ . '/../..' . '/app/Http/Controllers/LangueController.php',
         'App\\Http\\Controllers\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/MessageController.php',

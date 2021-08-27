@@ -25,17 +25,14 @@
                         <input type="text" name="libelle" class="form-control" id="exampleInputName1" placeholder="Name">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Format de l'activité : (<span class="red">*</span>)</label>
-                        <input type="text" name="libelle" class="form-control" id="exampleInputName1" placeholder="Name">
+                        <!--<label for="exampleInputName1">Format de l'activité : (<span class="red">*</span>)</label>
+                        <input type="text" name="libelle" class="form-control" id="exampleInputName1" placeholder="Name">-->
                         <label for="exampleInputName1">Topic : (<span class="red">*</span>)</label>
                         <input type="text" name="topic" class="form-control" id="exampleInputName1" placeholder="Name">
                       </div>
                       <div class="form-group">
                         <label for="exampleSelectGender">start_time  (<span class="red">*</span>)</label>
-                        <!--<select class="form-control" id="exampleSelectGender">
-                          <option>En ligne</option>
-                          <option>Hors ligne</option>
-                        </select> -->
+                    
                         <div class="">
                             <input type="date" name="start_time" class="form-control" placeholder="dd/mm/yyyy" />
                             </div>
@@ -45,7 +42,7 @@
                         <label for="exampleSelectGender">Duration  (<span class="red">*</span>)</label>
   
                         <div class="">
-                            <input type="number" name="duration" class="form-control" placeholder="dd/mm/yyyy" />
+                            <input type="number" name="duration" class="form-control" placeholder="Duration" />
                             </div>
                       </div>
 
@@ -53,13 +50,13 @@
                         <div class="form-group col-md-6">
                             <label class="col-form-label">Heure de début : (<span class="red">*</span>)</label>
                             <div class="">
-                            <input type="text" name="heure_debut" class="form-control" placeholder="dd/mm/yyyy" />
+                            <input type="time" name="heure_debut" class="form-control" placeholder="dd/mm/yyyy" />
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="col-form-label">Heure de fin : (<span class="red">*</span>)</label>
                             <div class="">
-                            <input type="text" name="heure_fin" class="form-control" placeholder="dd/mm/yyyy" />
+                            <input type="time" name="heure_fin" class="form-control" placeholder="dd/mm/yyyy" />
                             </div>
                         </div>
                     </div>

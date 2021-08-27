@@ -26,7 +26,7 @@ class ActiviteController extends Controller
     public function index()
     {
         //
-
+   
         $activites = DB::table('activites')->get();
 
         return view('Admin/activite.activiteLister', compact('activites'));
@@ -54,12 +54,8 @@ class ActiviteController extends Controller
     {
         //
 
-        //$activite = new Activite;
-        //$activite->libelle = $request->get('libelle');
-        //$activite->date = $request->get('date');
-        //$activite->heure_debut = $request->get('heure_debut');
-        //$activite->heure_fin = $request->get('heure_fin');
-        //$activite->save();
+        
+
         $data = $request->all();
         
 
@@ -69,10 +65,22 @@ class ActiviteController extends Controller
 
         $meet = $this->created($data);
 
+        $activite = new Activite;
+        $activite->libelle = $request->get('libelle');
+        $activite->date = $request->get('start_time');
+        $activite->heure_debut = $request->get('heure_debut');
+        $activite->heure_fin = $request->get('heure_fin');
+        $activite->start_url = $meet['data']['start_url'];
+        $activite->join_url = $meet['data']['join_url'];
+        $activite->password = $meet['data']['password'];
+        $activite->duration = $request->get('duration');
+        $activite->save();
+
        // $this->create($request->all());
-       dd($meet);
+       //dd($meet);
         //return back();
         //->route('meetings.index');
+        return redirect('/activites');
     }
 
     /**

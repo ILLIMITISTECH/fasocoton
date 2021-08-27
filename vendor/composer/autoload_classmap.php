@@ -19,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\FacilitateurController' => $baseDir . '/app/Http/Controllers/FacilitateurController.php',
     'App\\Http\\Controllers\\HotelController' => $baseDir . '/app/Http/Controllers/HotelController.php',
     'App\\Http\\Controllers\\IndisponibiliteParticipantController' => $baseDir . '/app/Http/Controllers/IndisponibiliteParticipantController.php',
+    'App\\Http\\Controllers\\InscriptionController' => $baseDir . '/app/Http/Controllers/InscriptionController.php',
     'App\\Http\\Controllers\\IntervenantController' => $baseDir . '/app/Http/Controllers/IntervenantController.php',
     'App\\Http\\Controllers\\LangueController' => $baseDir . '/app/Http/Controllers/LangueController.php',
     'App\\Http\\Controllers\\MessageController' => $baseDir . '/app/Http/Controllers/MessageController.php',

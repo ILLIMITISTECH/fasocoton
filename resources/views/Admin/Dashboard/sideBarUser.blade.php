@@ -9,7 +9,7 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/homes">
                 <span class="menu-title">Tabeau de bord</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
