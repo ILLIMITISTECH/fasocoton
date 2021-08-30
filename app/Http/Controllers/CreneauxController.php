@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Creneaux;
+use DB;
 use Illuminate\Http\Request;
 
 class CreneauxController extends Controller
@@ -13,72 +14,70 @@ class CreneauxController extends Controller
      */
     public function index()
     {
-        //
+        $crenaux = DB::table('creneaux')->get();
+
+        return view('Admin/crenaux.lister', compact('crenaux'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        $table= DB::table('tables')->get();
+        $salle= DB::table('salles')->get();
+        return view('Admin/crenaux.ajouter', compact( 'table', 'salle'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $message = 'Creneaux ajoutée avec succés';
+
+        $crenaux = new Crenaux;
+        $crenaux->table_id = $request->get('table_id');
+        $crenaux->salle_id = $request->get('salle_id');
+        $crenaux->date = $request->get('date');
+        $crenaux->heure_debut = $request->get('heure_debut');
+        $crenaux->heure_fin = $request->get('heure_fin');
+        $crenaux->save();
+        return back()->with(['message' => $message]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $crenaux = Crenaux::find($id);
+
+        return view('Admin/crenaux.edit', compact('crenaux'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        $message = 'Creneaux modifié avec succés';
+
+        $crenaux = new Crenaux;
+        $crenaux->table_id = $request->get('table_id');
+        $crenaux->salle_id = $request->get('salle_id');
+        $crenaux->date = $request->get('date');
+        $crenaux->heure_debut = $request->get('heure_debut');
+        $crenaux->heure_fin = $request->get('heure_fin');
+        $crenaux->update();
+       
+        return redirect('/crenaux')->with(['message' => $message]);   
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+        $crenaux = Crenaux::find($id);
+        $crenaux->delete();
+
+        return back()->with('info', "Evénement supprimée dans la base de donnée.");
     }
 }

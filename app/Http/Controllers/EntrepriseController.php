@@ -29,8 +29,11 @@ class EntrepriseController extends Controller
      */
     public function create()
     {
-        //
-        return view('Admin/entreprise.entrepriseCreate');
+        $pays= DB::table('pays')->get();
+        $secteur= DB::table('secteur_activites')->get();
+        $profil= DB::table('profils')->get();
+        
+        return view('Admin/entreprise.entrepriseCreate', compact( 'pays', 'secteur', 'profil'));
     }
 
     /**
@@ -41,7 +44,14 @@ class EntrepriseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = 'Entreprise ajoutée avec succés';
+
+        $entreprises = new Entreprise;
+        $entreprises->pays_id = $request->get('pays_id');
+        $entreprises->secteur_activite_id = $request->get('secteur_activite_id');
+        $entreprises->profil_id = $request->get('profil_id');
+        $entreprises->save();
+        return back()->with(['message' => $message]);
     }
 
     /**
@@ -63,7 +73,9 @@ class EntrepriseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $entreprises = Entreprise::find($id);
+
+        return view('Admin/entreprise.entrepriseEdit', compact('entreprises'));
     }
 
     /**
@@ -75,7 +87,15 @@ class EntrepriseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = 'Intervnant modifié avec succés';
+
+        $entreprises = new Entreprise;
+        $entreprises->pays_id = $request->get('pays_id');
+        $entreprises->secteur_activite_id = $request->get('secteur_activite_id');
+        $entreprises->profil_id = $request->get('profil_id');
+        $intervenant->update();
+       
+        return redirect('/entreprises')->with(['message' => $message]);   
     }
 
     /**
@@ -86,7 +106,9 @@ class EntrepriseController extends Controller
      */
     public function destroy($id)
     {
-        //
-        return ;
+        $entreprises = Entreprise::find($id);
+        $entreprises->delete();
+
+        return back()->with('info', "Evénement supprimée dans la base de donnée.");
     }
 }

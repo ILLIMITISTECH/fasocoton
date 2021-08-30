@@ -17,11 +17,11 @@
                 <div class="col-12 grid-margin">
                   <div class="card">
                   <h3>@if(session('message'))
-    <div class= "alerte alerte-success" role="alerte">
-        {{session('message')}}
-    </div>
-    @endif
-    </h3>
+                    <div class= "alerte alerte-success" role="alerte">
+                        {{session('message')}}
+                    </div>
+                    @endif
+                  </h3>
                     <div class="card-body">
                      
                       <div class="table-responsive">
@@ -36,31 +36,36 @@
                               <th> Pays</th>
                               <th> Téléphone</th>
                               <th> Langue</th>
-                              <th> Pays</th>
                               <th>Presence</th>
                               <th class="text-center"> Options</th>
                             </tr>
                           </thead>
                           <tbody>
-                          
-                            <tr>
-                                
-                                <td>Nonguierma</td>
-                                <td>Axel</td>
-                                <td>ILLIMITIS SAS</td>
-                                <td>Digital Project Manager</td>
-                                <td>axel.n@illimitis.com</td>
-                                <td>+221782967825</td>
-                                <td>Francais</td>
-                                <td>Senegal</td>
-                                <td>En ligne</td>
+                          @foreach ($participant as $participants)
+                            <tr> 
+                                <td>{{$participants->nom}}</td>
+                                <td>{{$participants->prenom}}</td>
+                                <td>{{$participants->entreprise_id}}</td>
+                                <td>{{$participants->fonction}}</td>
+                                <td>{{$participants->email}}</td>
+                                <td>{{$participants->pays_id}}</td>
+                                <td>{{$participants->tel_part}}</td>
+                                <td>{{$participants->langue_id}}</td>
+                                <td>{{$participants->presence}}</td>
                                 <td class="text-center"> 
                                 
+                                <a href="{{route('participants.edit', $participants->id)}}">
+                                <button type="button" class="btn btn-sm "style="background:#F49800;color:white" ><i class="bi bi-gear-fill"></i></i></button>
+                              </a>
                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
+                                <form action="{{route('participants.destroy', $participants->id)}}" method="post">
+                                  {{ csrf_field() }}
+                                  @method('DELETE')
                                 <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                                </form>
                               </td>
                             </tr>
-                            
+                            @endforeach
                           </tbody>
                         </table>
                       </div>

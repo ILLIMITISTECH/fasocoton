@@ -17,11 +17,11 @@
                 <div class="col-12 grid-margin">
                   <div class="card">
                   <h3>@if(session('message'))
-    <div class= "alerte alerte-success" role="alerte">
-        {{session('message')}}
-    </div>
-    @endif
-    </h3>
+                    <div class= "alerte alerte-success" role="alerte">
+                        {{session('message')}}
+                    </div>
+                    @endif
+                  </h3>
                     <div class="card-body">
                      
                       <div class="table-responsive">
@@ -38,22 +38,29 @@
                             </tr>
                           </thead>
                           <tbody>
-                          
+                          @foreach ($intervenant as $intervenants)
                             <tr>
                                 
-                                <td>Nonguierma</td>
-                                <td>Axel</td>
-                                <td>Speaker</td>
-                                <td>Francais</td>
-                                <td>axel.n@illimitis.com</td>
-                                <td>+221782967825</td>
+                                <td>{{$intervenants->nom}}</td>
+                                <td>{{$intervenants->prenom}}</td>
+                                <td>{{$intervenants->type_id}}</td>
+                                <td>{{$intervenants->langue_id}}</td>
+                                <td>{{$intervenants->email}}</td>
+                                <td>{{$intervenants->phone}}</td>
                                 <td class="text-center"> 
                                 
+                                <a href="{{route('intervenants.edit', $intervenants->id)}}">
+                                <button type="button" class="btn btn-sm "style="background:#F49800;color:white" ><i class="bi bi-gear-fill"></i></i></button>
+                              </a>
                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
+                                <form action="{{route('intervenants.destroy', $intervenants->id)}}" method="post">
+                                  {{ csrf_field() }}
+                                  @method('DELETE')
                                 <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                                </form>
                               </td>
                             </tr>
-                            
+                            @endforeach
                           </tbody>
                         </table>
                       </div>

@@ -121,6 +121,19 @@
               </div>
             </li>
             <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#crenaux" aria-expanded="false" aria-controls="crenaux">
+                <span class="menu-title">Creneaux</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-account-box menu-icon"></i>
+              </a>
+              <div class="collapse" id="crenaux">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="/creneaux"> </i> </i></i></i></i></i></i></i></i></i></i>Lister</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="creneaux/create">Ajouter</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#participants" aria-expanded="false" aria-controls="participants">
                 <span class="menu-title">Rendez-vous</span>
                 <i class="menu-arrow"></i>

@@ -77,7 +77,9 @@ class participantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $participant = Participant::find($id);
+
+        return view('Admin/participant.participantEdit', compact('participant'));
     }
 
     /**
@@ -89,7 +91,20 @@ class participantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = 'Participant modifée';
+        $participant = Event::find($id);
+        $participant->nom = $request->get('nom');
+        $participant->prenom = $request->get('prenom');
+        $participant->email = $request->get('email');
+        $participant->entreprise_id = $request->get('entreprise_id');
+        $participant->fonction = $request->get('fonction');
+        $participant->tel_part = $request->get('tel_part');
+        $participant->langue_id = $request->get('langue_id');
+        $participant->pays_id = $request->get('pays_id');
+        $participant->presence = $request->get('presence');
+        $participant->update();
+       
+        return redirect('/participants')->with(['message' => $message]);   
     }
 
     /**
@@ -100,6 +115,9 @@ class participantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $participant = Participant::find($id);
+        $participant->delete();
+
+        return back()->with('info', "participant supprimé dans la base de donnée.");
     }
 }

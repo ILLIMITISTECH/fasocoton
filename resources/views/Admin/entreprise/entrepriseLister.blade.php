@@ -17,6 +17,12 @@
             <div class="row"style="margin-top:-40px;">
                 <div class="col-12 grid-margin">
                   <div class="card">
+                  <h3>@if(session('message'))
+                    <div class= "alerte alerte-success" role="alerte">
+                        {{session('message')}}
+                    </div>
+                    @endif
+                  </h3>
                     <div class="card-body">
                      
                       <div class="table-responsive">
@@ -34,21 +40,29 @@
                             </tr>
                           </thead>
                           <tbody>
+                          @foreach ($entreprises as $entreprise)
                             <tr>
                                 
-                                <td>Illimitis</td>
-                                <td>Sénégal</td>
-                                <td>Digital et Formation</td>
-                                <td>Prestataire de services</td>
-                                <td> 5</td>
-                                <td>Nonguierma Axel</td>
+                                <td>{{$entreprise->nom_entreprise}}</td>
+                                <td>{{$entreprise->pays_id}}</td>
+                                <td>{{$entreprise->secteur_activite_id}}</td>
+                                <td>{{$entreprise->profil_id}}</td>
+                                <td>{{$entreprise->participant_id}}</td>
+                                <td> </td>
 
                                 <td class="text-center"> 
+                                <a href="{{route('entreprises.edit', $entreprise->id)}}">
                                 <button type="button" class="btn btn-sm "style="background:#F49800;color:white" ><i class="bi bi-gear-fill"></i></i></button>
+                              </a>
                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
+                                <form action="{{route('entreprises.destroy', $entreprise->id)}}" method="post">
+                                  {{ csrf_field() }}
+                                  @method('DELETE')
                                 <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                                </form> 
                               </td>
                             </tr>
+                            @endforeach
                           </tbody>
                         </table>
                       </div>
@@ -74,19 +88,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="assets/vendors/chart.js/Chart.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/hoverable-collapse.js"></script>
-    <script src="assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/todolist.js"></script>
-    <!-- End custom js for this page -->
+    @include('Admin/Dashboard.js')
+
   </body>
 </html>

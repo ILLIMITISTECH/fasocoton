@@ -76,7 +76,7 @@
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached mr-2 text-success"></i> Mon profil </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/">
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Déconnexion</a>
               </div>
             </li>

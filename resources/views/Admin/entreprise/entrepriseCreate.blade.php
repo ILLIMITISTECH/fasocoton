@@ -25,24 +25,37 @@
                         @endif
                     </h6>
                     <p class="card-description">Remplissez ce formulaire pour créer une entreprise</p>
-                    <form action="{{route('events.store')}}" method="post" class="forms-sample" enctype="multipart/form-data">
+                    <form action="{{route('entreprises.store')}}" method="post" class="forms-sample" enctype="multipart/form-data">
                           {{ csrf_field() }}
                       <div class="form-group">
                         <label for="exampleInputName1">Nom de l'entreprise: (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="nom_event_fr" placeholder="Name">
+                        <input type="text" class="form-control" name="nom_entreprise" placeholder="Name">
                       </div>
                      
                       <div class="form-group">
                         <label for="website">Pays</label>
-                        <input type="link" class="form-control" id="website" placeholder="Pays">
+                        <select class="form-control" name="pays_id" id="stade_entreprise">
+                            @foreach($pays as $pay)  
+                            <option value="pays_id">{{$pay->libelle_fr}} {{$pay->libelle_en}}</option>
+                            @endforeach
+                            </select>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputName1">Secteur d'activité : (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="libelle" id="exampleInputName1" placeholder="Libellé du secteur d'activité">
+                        <select class="form-control" name="secteur_activite_id" id="stade_entreprise">
+                            @foreach($secteur as $secteurs)  
+                            <option value="secteur_activite_id">{{$secteurs->libelle}}</option>
+                            @endforeach
+                            </select>
+                        
                       </div>
                       <div class="form-group">
                         <label for="exampleInputName1">Profil : (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Libellé du profil">
+                        <select class="form-control" name="profil_id" id="stade_entreprise">
+                            @foreach($profil as $profils)  
+                            <option value="profil_id">{{$profils->libelle}}</option>
+                            @endforeach
+                            </select>
                       </div>
                   
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
