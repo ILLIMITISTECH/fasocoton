@@ -4,7 +4,7 @@
 	<!--begin::Head-->
 	<head><base href="">
 		<meta charset="utf-8" />
-		<title>OptiEvent| Détails participant</title>
+		<title>OptiEvent</title>
 		<meta name="description" content="Rider admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
 		<meta name="keywords" content="Rider, bootstrap, bootstrap 5, dmin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
 		<link rel="canonical" href="Https://preview.keenthemes.com/rider-free" />
@@ -25,42 +25,49 @@
 		<div class="d-flex flex-column flex-root">
 			<div class="page d-flex flex-row flex-column-fluid">
                 <div class="col-5 left-part">
-                    <div class="form-head mt-5">
-                        <div class="text-center">
-							<div class="progress-container">
-								<ul class="progress-progressbar">
-									<li class="active">Détails participant</li>
-									<li>Détails entreprise</li>
-									<li>Centres d’intérêts</li>
-									<li>Finaliser l'inscription<br></li>
-								</ul>
-							</div>
-                        </div>
-                    </div>
+                   
 
 					<div class="step-header text-left">
-						<h3>Hello Fallou</h3>
+						<h3>Hello Fallou </h3>
 						<p>Nous aimerions en savoir plus sur vous !</p>
 					</div>
 					 <div class="details-participant-box">
 						
 						<div class="mb-10">
-							Serez vous présent sur place  au Rebarnding Africa Forum ?
-							<br><br><br>
+							Quels genre d'utilisateur etes vous ?
 							<div class="row">
 								<div class="col-6">
-									<a href="#" class="btn btn-flex btn-success px-6 button-response">
+									<a href="#" class="btn btn-flex btn-orange px-6 button-response">
 										<span class="d-flex flex-column align-items-start ms-2">
-											<h4 class="fs-3 fw-bolder">Oui</h4>
-											<p class="fs-7">Je serai présent sur place </p>
+											<h4 class="fs-3 fw-bolder">Participant sans entreprise</h4>
+											
 										</span>
 									</a>
 								</div>
 								<div class="col-6">
 									<a href="#" class="btn btn-flex btn-orange px-6 button-response">
 										<span class="d-flex flex-column align-items-start ms-2">
-											<h4 class="fs-3 fw-bolder">Non</h4>
-											<p class="fs-7">Je participerai en ligne </p>
+											<h4 class="fs-3 fw-bolder">Participant avec entreprise</h4>
+											
+										</span>
+									</a>
+								</div>
+							</div>
+							<br><br>
+							<div class="row">
+                                <div class="col-6">
+									<a href="#" class="btn btn-flex btn-orange px-6 button-response">
+										<span class="d-flex flex-column align-items-start ms-2">
+											<h4 class="fs-3 fw-bolder">Intervenant</h4>
+											
+										</span>
+									</a>
+								</div>
+								<div class="col-6">
+									<a href="#" class="btn btn-flex btn-orange px-6 button-response">
+										<span class="d-flex flex-column align-items-start ms-2">
+											<h4 class="fs-3 fw-bolder">Facilitateur</h4>
+											
 										</span>
 									</a>
 								</div>
@@ -68,8 +75,8 @@
 							</div>
       
                         </div>
+						
 </div>
-                        
                 </div>
                 <div class="col-7 right-part">
                     <div class="adspace-head mt-5">

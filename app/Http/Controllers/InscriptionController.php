@@ -41,6 +41,10 @@ public function inscription()
 {
     return view('User.inscription');
 }
+public function inscriptionstep0()
+{
+    return view('User.inscriptionstep0');
+}
 public function inscriptionstep1()
 {
     return view('User.inscriptionstep1');

@@ -46,7 +46,7 @@
                             d’informations sur votre Entreprise et sur le type de partenaires que vous recherchez.
                         </p>
 					</div>
-					 <div class="details-participant-box">						
+					<div class="details-participant-box">						
 						<form class="row g-3">
                             <div class="col-md-8">
                               <label for="inputEmail4" class="form-label required">Nom de l'Entreprise /Company name : </label>
@@ -131,18 +131,42 @@
                                         <button id="addRow" type="button" class="btn btn-info mt-5">Ajouter plus / Add more</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <button type="button" class="btn btn-violet">Continuer </button>
-                                <button type="button" class="btn btn-danger">Quitter</button>
-                            </div>
-                        </form>
-                        <hr>
-                        	
+                                <div class="mb-10">
+							Êtes-vous intéréssé par les réseautage d’affaire (Networking) ?
+							<div class="row">
+								<div class="col-6">
+									<a href="#" class="btn btn-flex btn-info px-6 button-response">
+										<span class="d-flex flex-column align-items-start ms-2">
+											<h4 class="fs-3 fw-bolder">Oui</h4>
+											<p class="fs-7">Je suis intéréssé </p>
+										</span>
+									</a>
+								</div>
+								<div class="col-6">
+									<a href="#" class="btn btn-flex btn-info px-6 button-response">
+										<span class="d-flex flex-column align-items-start ms-2">
+											<h4 class="fs-3 fw-bolder">Non</h4>
+											<p class="fs-7">Je ne suis pas
+												intéréssé ! </p>
+										</span>
+									</a>
+								</div>
+							
+							</div>
+							
+      
+                        </div>
+						<div class="mt-5 col-12">
+                            <button type="button" class="btn btn-violet">Continuer </button>
+                            <button type="button" class="btn btn-danger">Quitter</button>
+                        </div>
+						
+
+                </div>       	
                       
-                    </div>
-                        
-                </div>
+            </div>
+        </div>
+
                 <div class="col-6 right-part">
                     <div class="adspace-head mt-5">
                         <div class="text-center">
@@ -158,9 +182,7 @@
                         </div>
                     </div>
                 </div>
-			</div>
-		</div>
-		
+                </div>
 
 		<!--begin::Javascript-->
         <script type="text/javascript">

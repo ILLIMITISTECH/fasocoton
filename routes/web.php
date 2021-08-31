@@ -109,6 +109,8 @@ Route::get('/homesuggestions', 'App\Http\Controllers\InsriptionController@homesu
 
 Route::get('/inscriptions', 'App\Http\Controllers\InscriptionController@inscription');
 
+Route::get('/inscriptionstep0', 'App\Http\Controllers\InscriptionController@inscriptionstep0');
+
 Route::get('/inscriptionstep1', 'App\Http\Controllers\InscriptionController@inscriptionstep1');
 
 Route::get('/inscriptionstep2', 'App\Http\Controllers\InscriptionController@inscriptionstep2');
