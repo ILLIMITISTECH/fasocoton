@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Entreprise;
+use App\Models\Participant;
 use DB;
+use Auth;
+
 
 
 class EntrepriseController extends Controller
@@ -48,12 +51,29 @@ class EntrepriseController extends Controller
 
         $entreprises = new Entreprise;
         $entreprises->pays_id = $request->get('pays_id');
-        $entreprises->secteur_activite_id = $request->get('secteur_activite_id');
-        $entreprises->profil_id = $request->get('profil_id');
+        $entreprises->secteur_activite_id = $request->get('secteur_a');
+        $entreprises->profil_id = $request->get('profil_a');
         $entreprises->save();
         return back()->with(['message' => $message]);
     }
+    public function inscriptionentreprise(Request $request, $id)
+    {
+        $message = 'Entreprise ajoutée avec succés';
 
+        $entreprises = new Entreprise;
+        $entreprises->nom_entreprise = $request->get('nom_entreprise');
+        $entreprises->pay_id = $request->get('pay_id');
+        $entreprises->secteur_a = $request->get('secteur_a');
+        $entreprises->profil_entreprise_a = $request->get('profil_entreprise_a');
+        $entreprises->autre_participant = $request->get('autre_participant');
+        $entreprises->user_id = Auth::user()->id;
+        $entreprises->save();
+        $participant = Participant::findOrFail($id);
+        $participant->fonction = $request->get('fonction');
+        $participant->profil = $request->get('profil');
+        $participant->save();
+        return redirect('/inscriptionstep3')->with(['message' => $message]);
+    }
     /**
      * Display the specified resource.
      *

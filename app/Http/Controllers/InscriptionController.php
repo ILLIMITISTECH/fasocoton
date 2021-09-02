@@ -51,7 +51,10 @@ public function inscriptionstep1()
 }
 public function inscriptionstep2()
 {
-    return view('User.inscriptionstep2');
+    $pays= DB::table('pays')->get();
+        $secteur= DB::table('secteur_activites')->get();
+        $profil= DB::table('profils')->get();
+    return view('User.inscriptionstep2', compact( 'pays', 'secteur', 'profil'));
 }
 public function inscriptionstep3()
 {

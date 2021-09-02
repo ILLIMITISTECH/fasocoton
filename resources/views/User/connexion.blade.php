@@ -75,7 +75,7 @@ License: For each use you must have a valid license purchased only from above li
                         <button class="btn btn-violet">Connexion</button>
                        </form>
                        <div class="text-center">
-                        Vous n'avez pas de compte ? <a class="orange-link" href="#">Inscrivez-vous maintenant !</a>
+                        Vous n'avez pas de compte ? <a class="orange-link" href="/inscriptions">Inscrivez-vous maintenant !</a>
                         </div>
                     </div>        
                 </div>

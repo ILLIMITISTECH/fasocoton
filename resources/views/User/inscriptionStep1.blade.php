@@ -39,7 +39,7 @@
                     </div>
 
 					<div class="step-header text-left">
-						<h3>Hello Fallou</h3>
+						<h3>Hello {{Auth::user()->prenom}}</h3>
 						<p>Nous aimerions en savoir plus sur vous !</p>
 					</div>
 					 <div class="details-participant-box">
@@ -47,11 +47,17 @@
 						<div class="mb-10">
 							Serez vous présent sur place  au Rebarnding Africa Forum ?
 							<br><br><br>
+							<?php 
+								$participants = DB::table('participants')->where('user_id', Auth::user()->id)->get();
+							?>
+							@foreach($participants as $participant)
+							<form action="{{route('presence.participant', $participant->id)}}" method="post">
+							{{ csrf_field() }}
 							<div class="row">
 								<div class="col-6">
 									<a href="#" class="btn btn-flex btn-success px-6 button-response">
 										<span class="d-flex flex-column align-items-start ms-2">
-											<h4 class="fs-3 fw-bolder">Oui</h4>
+											<input class="fs-3 fw-bolder" value="1" name="presence" type="radio">Oui
 											<p class="fs-7">Je serai présent sur place </p>
 										</span>
 									</a>
@@ -59,15 +65,25 @@
 								<div class="col-6">
 									<a href="#" class="btn btn-flex btn-orange px-6 button-response">
 										<span class="d-flex flex-column align-items-start ms-2">
-											<h4 class="fs-3 fw-bolder">Non</h4>
+										<input class="fs-3 fw-bolder" value="0" name="presence" type="radio">Non
+											
 											<p class="fs-7">Je participerai en ligne </p>
 										</span>
 									</a>
 								</div>
 							
 							</div>
-      
+							<div class="mt-5 col-12">
+                            <button type="submit" class="btn btn-violet">Continuer </button>
+                            <button type="button" class="btn btn-danger">Quitter</button>
                         </div>
+						
+						</form>
+						@endforeach
+
+                        </div>
+						
+
 </div>
                         
                 </div>

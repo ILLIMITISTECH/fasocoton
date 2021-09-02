@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Participant;
 use DB;
+use Auth;
 
 class participantController extends Controller
 {
@@ -57,6 +58,35 @@ class participantController extends Controller
         return back()->with(['message' => $message]);
 
     }
+    public function userparticipant(Request $request)
+    {
+        $message = 'Participant ajoutée avec succés';
+        $participant = new Participant;
+        $participant->nom = Auth::user()->nom;
+        $participant->prenom = Auth::user()->prenom;
+        $participant->email = Auth::user()->email;
+        $participant->entreprise_id = $request->get('entreprise_id');
+        $participant->fonction = $request->get('fonction');
+        $participant->tel_part = Auth::user()->portable;
+        $participant->langue_id = Auth::user()->langue_id;
+        $participant->pays_id = Auth::user()->pays_id;
+        $participant->user_id = Auth::user()->id;
+
+        $participant->presence = $request->get('presence');
+        $participant->save();
+        return redirect('/inscriptionstep1')->with(['message' => $message]);
+
+    }
+    public function presenceparticipant(Request $request, $id)
+    {
+        $message = 'Participant ajoutée avec succés';
+        $participant = Participant::findOrFail($id);
+        $participant->presence = $request->get('presence');
+        $participant->save();
+        return redirect('/inscriptionstep2')->with(['message' => $message]);
+
+    }
+   
 
     /**
      * Display the specified resource.

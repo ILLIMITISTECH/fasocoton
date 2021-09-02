@@ -109,7 +109,7 @@ License: For each use you must have a valid license purchased only from above li
                         <button type="submit" class="btn btn-violet">Je m'inscris / I sign up</button>
                        </form>
                        <div class="text-center">
-                        Vous avez déja un compte ? <a class="orange-link" href="#">Connectez-vous maintenant !</a>
+                        Vous avez déja un compte ? <a class="orange-link" href="/">Connectez-vous maintenant !</a>
                         </div>
                     </div>        
                 </div>

@@ -32,10 +32,11 @@
                         <div class="text-center">
 							<div class="progress-container">
 								<ul class="progress-progressbar">
-									<li>Détails participant</li>
-									<li>Détails entreprise</li>
-									<li>Centres d’intérêts</li>
-									<li class="active">Finaliser l'inscription<br></li>
+									<<a href="/inscriptionstep1"><li>Détails participant</li></a>
+									<a href="/inscriptionstep2"><li>Détails entreprise</li></a>
+									<a href="/inscriptionstep3"><li>Centres d’intérêts</li></a>
+									<a href="/inscriptionstep4"><li class="active">Finaliser l'inscription<br></li></a>
+								
 								</ul>
 							</div>
                         </div>

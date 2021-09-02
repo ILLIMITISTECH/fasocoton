@@ -46,67 +46,65 @@
                             d’informations sur votre Entreprise et sur le type de partenaires que vous recherchez.
                         </p>
 					</div>
-					<div class="details-participant-box">						
-						<form class="row g-3">
+					<div class="details-participant-box">		
+                    <?php 
+								$participants = DB::table('participants')->where('user_id', Auth::user()->id)->get();
+							?>
+							@foreach($participants as $participant)
+
+						<form class="row g-3" action="{{route('inscription.entreprise', $participant->id)}}" method="post">
+                        {{ csrf_field() }}
                             <div class="col-md-8">
                               <label for="inputEmail4" class="form-label required">Nom de l'Entreprise /Company name : </label>
-                              <input type="email" class="form-control" id="inputEmail4">
+                              <input type="text" name="nom_entreprise" class="form-control" id="inputEmail4">
                             </div>
                     
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label required">Pays / Country :</label>
-                                <select id="inputState" class="form-select">
-                                  <option selected>Choose...</option>
-                                  <option>...</option>
-                                  <option>...</option>
-                                  <option>...</option>
-                                </select>
-                              </div>
+                                <select class="form-select" name="pay_id" id="stade_entreprise">
+                                        @foreach($pays as $pay)  
+                                        <option value="{{$pay->id}}">{{$pay->libelle_fr}}</option>
+                                        @endforeach
+                                </select>                               
+                            </div>
+
                               <label for="inputState" class="form-label required">Secteurs d’activité de l’Entreprises / Company Sectors of activity :</label>
                               <div class="col-md-12">
-                                <multi-input>
-                                  <input list="speakers" placeholder="Sélectionner /Choose ...">
-                                    <datalist id="speakers" value ="Test">
-                                        <option value="BTP"></option>
-                                        <option value="Bishop Stokesly of London"></option>
-                                        <option value="Caesar’s Second Watchman"></option>
-                                        
-                                    </datalist>
-                                </multi-input>
+                              <select class="form-select" name="secteur_a" id="stade_entreprise">
+                                    @foreach($secteur as $secteurs)  
+                                    <option value="{{$secteurs->libelle}}">{{$secteurs->libelle}}</option>
+                                    @endforeach
+                            </select>
                               </div>
                               <label for="inputState" class="form-label required">Profil de l’Entreprise / Company Profile :</label>
                               <div class="col-md-12">
-                                <multi-input>
-                                  <input list="speakers-2" placeholder="Sélectionner /Choose ...">
-                                    <datalist id="speakers-2" value ="Test">
-                                        <option value="Investisseurs"></option>
-                                        <option value="Bishop Stokesly of London"></option>
-                                        <option value="Caesar’s Second Watchman"></option>
-                                       
-                                    </datalist>
-                                </multi-input>
+                              <select class="form-select" name="profil_entreprise_a" id="stade_entreprise">
+                                    @foreach($profil as $profils)  
+                                    <option value="{{$profils->libelle}}">{{$profils->libelle}}</option>
+                                    @endforeach
+                            </select>
                               </div>
                               
                               <div class="col-md-12">
                                 <label for="inputEmail4" class="form-label required">Quel est votre fonction ? / What is your position ? </label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Entrer la fonction">
+                                <input type="text" class="form-control" name="fonction" id="inputEmail4" placeholder="Entrer la fonction">
                               </div>
                               <hr>
                               <div class="col-md-12 mt-4">
                                 <label for="inputEmail4" class="form-label required">Cochez cette case si vous êtes le participant principal (point focal pour votre entreprise ? <br> Check this box if you are the main participant (focal point for your company? </label>
                                 <div class="form-check form-switch form-check-custom form-check-solid">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexSwitchDefault"/>  
+                                    <input class="form-check-input" name="profil" type="checkbox" value="1" id="flexSwitchDefault"/>  
                                 </div>                              
                              </div>
                              <div class="col-md-12 mt-4">
                                 <label for="inputEmail4" class="form-label required">Cochez cette case si vous souhaitez ajouter d’autres participants pour votre entreprise  / Check this box if you want to add more participants for your company </label>
                                 <div class="form-check form-switch form-check-custom form-check-solid">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexSwitchDefault"/>  
+                                    <input class="form-check-input" name="autre_participant" type="checkbox" value="1" id="flexSwitchDefault"/>  
                                 </div>                              
                              </div>
-                          </form>
+                          
                           <!-- Ajouter plusieurs participants -->
-                          <form method="post" action="">
+                          <!-- <form method="post" action="">
                             <div class="row">
                                 <div class="card col-lg-12">
                                 
@@ -153,14 +151,15 @@
 								</div>
 							
 							</div>
-							
+							-->
       
-                        </div>
+                        </div> 
 						<div class="mt-5 col-12">
-                            <button type="button" class="btn btn-violet">Continuer </button>
+                            <button type="submit" class="btn btn-violet">Continuer </button>
                             <button type="button" class="btn btn-danger">Quitter</button>
                         </div>
-						
+						</form>
+                          @endforeach
 
                 </div>       	
                       

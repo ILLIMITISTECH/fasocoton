@@ -28,7 +28,7 @@
                    
 
 					<div class="step-header text-left">
-						<h3>Hello Fallou </h3>
+						<h3>Hello {{Auth::user()->prenom}} </h3>
 						<p>Nous aimerions en savoir plus sur vous !</p>
 					</div>
 					 <div class="details-participant-box">
@@ -39,18 +39,21 @@
 								<div class="col-6">
 									<a href="#" class="btn btn-flex btn-orange px-6 button-response">
 										<span class="d-flex flex-column align-items-start ms-2">
-											<h4 class="fs-3 fw-bolder">Participant sans entreprise</h4>
+											<h4 class="fs-3 fw-bolder">Organisateur</h4>
 											
 										</span>
 									</a>
 								</div>
 								<div class="col-6">
-									<a href="#" class="btn btn-flex btn-orange px-6 button-response">
+									<form action="/userparticipants" method="post">
+									{{ csrf_field() }}
+									<button type="submit" class="btn btn-flex btn-orange px-6 button-response">
 										<span class="d-flex flex-column align-items-start ms-2">
-											<h4 class="fs-3 fw-bolder">Participant avec entreprise</h4>
+											<h4 class="fs-3 fw-bolder">Participant</h4>
 											
 										</span>
-									</a>
+									</button>
+									</form>
 								</div>
 							</div>
 							<br><br>

@@ -32,10 +32,10 @@
                         <div class="text-center">
 							<div class="progress-container">
 								<ul class="progress-progressbar">
-									<li>Détails participant</li>
-									<li>Détails entreprise</li>
-									<li class="active">Centres d’intérêts</li>
-									<li>Finaliser l'inscription<br></li>
+                                <a href="/inscriptionstep1"><li>Détails participant</li></a>
+									<a href="/inscriptionstep2"><li>Détails entreprise</li></a>
+									<a href="/inscriptionstep3"><li class="active">Centres d’intérêts</li></a>
+									<a href="/inscriptionstep4"><li>Finaliser l'inscription<br></li></a>
 								</ul>
 							</div>
                         </div>
@@ -84,7 +84,7 @@
                               </div>
                               <hr>
                               <div class="col-12">
-                                <button type="button" class="btn btn-violet">Continuer </button>
+                                <button type="submit" class="btn btn-violet">Continuer </button>
                                 <button type="button" class="btn btn-danger">Quitter</button>
                             </div>
                           </form>
