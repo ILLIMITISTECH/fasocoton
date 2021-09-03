@@ -64,7 +64,7 @@ class EntrepriseController extends Controller
         $entreprises->nom_entreprise = $request->get('nom_entreprise');
         $entreprises->pay_id = $request->get('pay_id');
         $entreprises->secteur_a = $request->get('secteur_a');
-        $entreprises->profil_entreprise_a = $request->get('profil_entreprise_a');
+        $entreprises->profile_entreprise_a = $request->get('profile_entreprise_a');
         $entreprises->autre_participant = $request->get('autre_participant');
         $entreprises->user_id = Auth::user()->id;
         $entreprises->save();
@@ -74,6 +74,18 @@ class EntrepriseController extends Controller
         $participant->save();
         return redirect('/inscriptionstep3')->with(['message' => $message]);
     }
+    public function secteurrechercher(Request $request, $id)
+    {
+        $message = 'Participant ajoutée avec succés';
+        $entreprises = Entreprise::findOrFail($id);
+        $entreprises->secteur_activite_rechercher = $request->get('secteur_activite_rechercher');
+        $entreprises->profile_entreprise_rechercher = $request->get('profile_entreprise_rechercher');
+        $entreprises->partenaire_rechercher = $request->get('partenaire_rechercher');
+        $entreprises->save();
+        return redirect('/homeplannings')->with(['message' => $message]);
+
+    }
+   
     /**
      * Display the specified resource.
      *

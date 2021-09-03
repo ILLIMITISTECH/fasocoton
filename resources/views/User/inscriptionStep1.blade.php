@@ -48,7 +48,7 @@
 							Serez vous présent sur place  au Rebarnding Africa Forum ?
 							<br><br><br>
 							<?php 
-								$participants = DB::table('participants')->where('user_id', Auth::user()->id)->get();
+								$participants = DB::table('participants')->where('user_id', Auth::user()->id)->paginate(1);
 							?>
 							@foreach($participants as $participant)
 							<form action="{{route('presence.participant', $participant->id)}}" method="post">
@@ -75,7 +75,7 @@
 							</div>
 							<div class="mt-5 col-12">
                             <button type="submit" class="btn btn-violet">Continuer </button>
-                            <button type="button" class="btn btn-danger">Quitter</button>
+                            <a href="/inscriptionstep0"><button type="button" class="btn btn-danger">Quitter</button></a>
                         </div>
 						
 						</form>

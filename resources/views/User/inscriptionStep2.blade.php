@@ -48,7 +48,7 @@
 					</div>
 					<div class="details-participant-box">		
                     <?php 
-								$participants = DB::table('participants')->where('user_id', Auth::user()->id)->get();
+								$participants = DB::table('participants')->where('user_id', Auth::user()->id)->paginate(1);
 							?>
 							@foreach($participants as $participant)
 
@@ -62,6 +62,7 @@
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label required">Pays / Country :</label>
                                 <select class="form-select" name="pay_id" id="stade_entreprise">
+                                  <option value="">selectionner</option>
                                         @foreach($pays as $pay)  
                                         <option value="{{$pay->id}}">{{$pay->libelle_fr}}</option>
                                         @endforeach
@@ -71,15 +72,17 @@
                               <label for="inputState" class="form-label required">Secteurs d’activité de l’Entreprises / Company Sectors of activity :</label>
                               <div class="col-md-12">
                               <select class="form-select" name="secteur_a" id="stade_entreprise">
-                                    @foreach($secteur as $secteurs)  
+                              <option value="">selectionner</option>      
+                              @foreach($secteur as $secteurs)  
                                     <option value="{{$secteurs->libelle}}">{{$secteurs->libelle}}</option>
                                     @endforeach
                             </select>
                               </div>
                               <label for="inputState" class="form-label required">Profil de l’Entreprise / Company Profile :</label>
                               <div class="col-md-12">
-                              <select class="form-select" name="profil_entreprise_a" id="stade_entreprise">
-                                    @foreach($profil as $profils)  
+                              <select class="form-select" name="profile_entreprise_a" id="stade_entreprise">
+                              <option value="">selectionner</option>      
+                              @foreach($profil as $profils)  
                                     <option value="{{$profils->libelle}}">{{$profils->libelle}}</option>
                                     @endforeach
                             </select>
@@ -104,11 +107,11 @@
                              </div>
                           
                           <!-- Ajouter plusieurs participants -->
-                          <!-- <form method="post" action="">
+                          <form method="post" action="">
                             <div class="row">
                                 <div class="card col-lg-12">
                                 
-                                    <div class="card-body">
+                                    <!--<div class="card-body">
                                         <div id="inputFormRow">
                                             <div class="input-group row mb-3">
                                                 <div class="col-md-5">
@@ -152,11 +155,12 @@
 							
 							</div>
 							-->
-      
-                        </div> 
+
+                        </div>
+ 
 						<div class="mt-5 col-12">
                             <button type="submit" class="btn btn-violet">Continuer </button>
-                            <button type="button" class="btn btn-danger">Quitter</button>
+                            <a href="/inscriptionstep0"><button type="button" class="btn btn-danger">Quitter</button></a>
                         </div>
 						</form>
                           @endforeach

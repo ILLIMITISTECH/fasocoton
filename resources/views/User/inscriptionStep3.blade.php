@@ -50,43 +50,42 @@
 
                     </div>
 				
-					 <div class="details-participant-box">						
-						<form class="row g-3">
-                            
+					 <div class="details-participant-box">		
+                     <?php 
+								$entreprises = DB::table('entreprises')->where('user_id', Auth::user()->id)->paginate(1);
+							?>
+							@foreach($entreprises as $entreprise)				
+						<form class="row g-3" action="{{route('secteur.profil', $entreprise->id)}}" method="post">
+                            {{ csrf_field() }}
                               <label for="inputState" class="form-label required">Secteurs d’activité recherché :  / Sectors of activity sought :</label>
                               <div class="col-md-12">
-                                <multi-input>
-                                  <input list="speakers" placeholder="Sélectionner /Choose ...">
-                                    <datalist id="speakers" value ="Test">
-                                        <option value="BTP"></option>
-                                        <option value="Bishop Stokesly of London"></option>
-                                        <option value="Caesar’s Second Watchman"></option>
-                                        
-                                    </datalist>
-                                </multi-input>
+                              <select class="form-select" name="secteur_activite_rechercher" id="stade_entreprise">
+                                  <option value="">selectionner</option>
+                                        @foreach($secteur as $secteurs)  
+                                        <option value="{{$secteurs->id}}">{{$secteurs->libelle}}</option>
+                                        @endforeach
+                                </select>    
                               </div>
                               <label for="inputState" class="form-label required">Profil  d’Entreprise recherché  / Company profile sought : </label>
                               <div class="col-md-12">
-                                <multi-input>
-                                  <input list="speakers-2" placeholder="Sélectionner /Choose ...">
-                                    <datalist id="speakers-2" value ="Test">
-                                        <option value="Investisseurs"></option>
-                                        <option value="Bishop Stokesly of London"></option>
-                                        <option value="Caesar’s Second Watchman"></option>
-                                       
-                                    </datalist>
-                                </multi-input>
+                              <select class="form-select" name="profile_entreprise_rechercher" id="stade_entreprise">
+                              <option value="">selectionner</option>         
+                                        @foreach($profil as $profils)  
+                                        <option value="{{$profils->id}}">{{$profils->libelle}}</option>
+                                        @endforeach
+                                </select>    
                               </div>
                               
                               <div class="col-md-12">
                                 <label for="inputEmail4" class="form-label required">Plus de détails sur le type de partenaires recherché / More details on the type of partners sought :</label>
-                                <textarea class="form-control" id="details-partenaires"rows="3"></textarea> 
+                                <textarea class="form-control" name="partenaire_rechercher" id="details-partenaires"rows="3"></textarea> 
                               </div>
                               <hr>
                               <div class="col-12">
                                 <button type="submit" class="btn btn-violet">Continuer </button>
-                                <button type="button" class="btn btn-danger">Quitter</button>
+                                <a href="/inscriptionstep0"><button type="button" class="btn btn-danger">Quitter</button></a>
                             </div>
+                            @endforeach
                           </form>
 
                     </div>

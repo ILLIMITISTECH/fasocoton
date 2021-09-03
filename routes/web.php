@@ -92,6 +92,7 @@ Route::get('/parametres', 'App\Http\Controllers\UserController@parametre');
 Route::post('/userparticipants', 'App\Http\Controllers\ParticipantController@userparticipant');
 Route::post('/presenceparticipants/{id}', 'App\Http\Controllers\ParticipantController@presenceparticipant')->name('presence.participant');
 Route::post('/inscriptionentreprises/{id}', 'App\Http\Controllers\EntrepriseController@inscriptionentreprise')->name('inscription.entreprise');
+Route::post('/secteur/profil/{id}', 'App\Http\Controllers\EntrepriseController@secteurrechercher')->name('secteur.profil');
 
 
 Route::resource('/voyages', 'App\Http\Controllers\VoyageController');

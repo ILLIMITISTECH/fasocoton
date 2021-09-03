@@ -58,7 +58,9 @@ public function inscriptionstep2()
 }
 public function inscriptionstep3()
 {
-    return view('User.inscriptionstep3');
+        $secteur= DB::table('secteur_activites')->get();
+        $profil= DB::table('profils')->get();
+    return view('User.inscriptionstep3', compact('secteur', 'profil'));
 }
 public function inscriptionstep4()
 {
@@ -100,7 +102,7 @@ public function saveconnexion(Request $request){
         }
         elseif(Auth::attempt(['email'=>$data['email'], 'password'=>$data['password']])){
         
-            return redirect('/homeplannings')->with(['message' => $message]);
+            return redirect('/inscriptionstep0')->with(['message' => $message]);
         }
         else{
             //echo "failed"; die;

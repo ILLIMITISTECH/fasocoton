@@ -241,7 +241,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 									<!--begin::Menu wrapper-->
 									<div class="cursor-pointer symbol symbol-circle symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-										<img alt="Pic" src="{{asset('User/assets/media/avatars/150-26.jpg')}}" />
+										<a href="/"><img style="width:50px" alt="Pic" src="{{asset('User/assets/media/avatars/150-26.jpg')}}" /></a>
 									</div>
 									<!--begin::Menu-->
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
