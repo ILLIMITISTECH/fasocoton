@@ -9,7 +9,7 @@
 		<meta name="keywords" content="Rider, bootstrap, bootstrap 5, dmin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
 		<link rel="canonical" href="Https://preview.keenthemes.com/rider-free" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="{{asset('User/assets/media/optieventFavIcon.png')}}" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -27,24 +27,25 @@
 		<!--begin::Main-->
 		<div class="d-flex flex-column flex-root">
 			<div class="page d-flex flex-row flex-column-fluid">
+			     @include('User/sideInscription')
                 <div class="col-6 left-part">
                     <div class="form-head mt-5">
                         <div class="text-center">
 							<div class="progress-container">
 								<ul class="progress-progressbar">
-                                <a href="/inscriptionstep1"><li>Détails participant</li></a>
-									<a href="/inscriptionstep2"><li>Détails entreprise</li></a>
-									<a href="/inscriptionstep3"><li class="active">Centres d’intérêts</li></a>
-									<a href="/inscriptionstep4"><li>Finaliser l'inscription<br></li></a>
+                                    <li>{{ __('Participant details') }}</li></a>
+									<li>{{ __('Company details') }}</li></a>
+									<li class="active">{{ __('Interests') }}</li>
+									<!--<li>Finaliser l'inscription<br></li>-->
 								</ul>
 							</div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="step-header text-left">
-                            <h4>Quel type de partenaires recherchez-vous ? </h4>
-                            <p>Pour vous suggérer des rendez-vous pertinents, nous avons besoin  de plus 
-                                d’informations sur votre Entreprise et sur le type de partenaires que vous recherchez.
+                            <h4>{{ __('What kind of partners are you looking for?') }} </h4>
+                            <p>{{ __('In order to suggest relevant meetings, we need more information about your information about your company and the type of partners you are looking for.') }}
+                            
                             </p>
                         </div>
 
@@ -57,33 +58,100 @@
 							@foreach($entreprises as $entreprise)				
 						<form class="row g-3" action="{{route('secteur.profil', $entreprise->id)}}" method="post">
                             {{ csrf_field() }}
-                              <label for="inputState" class="form-label required">Secteurs d’activité recherché :  / Sectors of activity sought :</label>
-                              <div class="col-md-12">
-                              <select class="form-select" name="secteur_activite_rechercher" id="stade_entreprise">
-                                  <option value="">selectionner</option>
-                                        @foreach($secteur as $secteurs)  
-                                        <option value="{{$secteurs->id}}">{{$secteurs->libelle}}</option>
-                                        @endforeach
-                                </select>    
+                              <label for="inputState" class="form-label required">{{ __('Sectors of activity sought') }}:</label>
+                              <div class="col-md-4">
+                              <!--<multi-input>-->
+                              <!--    <input list="speaker" placeholder="Sélectionner /Choose ..." style ="min-width : 500px;"class="form-select" name="secteur_activite_rechercher" id="stade_entreprise">
+                                    <datalist id="speaker" value ="">-->
+                                    <label class="form-label "> {{ __('Sector 1') }}:  </label>
+                                     <select name="partenaire_rencontrer_a" class="form-select" id="stade_entreprise">
+                              <option value="">{{ __('Select') }}</option>      
+                              @foreach($secteur as $secteurs)  
+                                    <option value="{{$secteurs->libelle}}">{{$secteurs->libelle}}</option>
+                                    @endforeach
+                                     </select>
+                                <!--      </datalist>-->
+                                <!--</multi-input>-->
                               </div>
-                              <label for="inputState" class="form-label required">Profil  d’Entreprise recherché  / Company profile sought : </label>
-                              <div class="col-md-12">
-                              <select class="form-select" name="profile_entreprise_rechercher" id="stade_entreprise">
-                              <option value="">selectionner</option>         
-                                        @foreach($profil as $profils)  
-                                        <option value="{{$profils->id}}">{{$profils->libelle}}</option>
-                                        @endforeach
-                                </select>    
+                               <div class="col-md-4">
+                              <!--<multi-input>-->
+                              <!--    <input list="speaker" placeholder="Sélectionner /Choose ..." style ="min-width : 500px;"class="form-select" name="secteur_activite_rechercher" id="stade_entreprise">
+                                    <datalist id="speaker" value ="">-->
+                                    <label class="form-label ">{{ __('Sector 2') }} :  </label>
+                                     <select name="partenaire_rencontrer_b" class="form-select" id="stade_entreprise">
+                              <option value="">{{ __('Select') }}</option>      
+                              @foreach($secteur as $secteurs)  
+                                    <option value="{{$secteurs->libelle}}">{{$secteurs->libelle}}</option>
+                                    @endforeach
+                                     </select>
+                                <!--      </datalist>-->
+                                <!--</multi-input>-->
+                              </div>
+                               <div class="col-md-4">
+                              <!--<multi-input>-->
+                              <!--    <input list="speaker" placeholder="Sélectionner /Choose ..." style ="min-width : 500px;"class="form-select" name="secteur_activite_rechercher" id="stade_entreprise">
+                                    <datalist id="speaker" value ="">-->
+                                    <label class="form-label "> {{ __('Sector 3') }} : </label>
+                                     <select name="partenaire_rencontrer_c" class="form-select" id="stade_entreprise">
+                              <option value="">{{ __('Select') }}</option>      
+                              @foreach($secteur as $secteurs)  
+                                    <option value="{{$secteurs->libelle}}">{{$secteurs->libelle}}</option>
+                                    @endforeach
+                                     </select>
+                                <!--      </datalist>-->
+                                <!--</multi-input>-->
+                              </div>
+                              <br><br><br><br><br><br>
+                              <label for="inputState" class="form-label required">{{ __('Company profile sought') }} : </label>
+                             <div class="col-md-4"><multi-input>
+                                  <!--<input list="ba" placeholder="Sélectionner /Choose ..." style ="min-width : 500px;"class="form-select" name="profile_entreprise_rechercher" id="stade_entreprise">-->
+                                  <!-- <datalist id="ba" value ="">-->
+                                   <label class="form-label "> {{ __('Profil 1') }} : </label>
+                                  <select name="profile_partenaire_rechercher_a" class="form-select" id="stade_entreprise">
+                              <option value="">{{ __('Select') }}</option>      
+                              @foreach($profil as $profilss)  
+                                    <option value="{{$profilss->libelle}}">{{$profilss->libelle}}</option>
+                                    @endforeach
+                                    </select>
+                              <!--</datalist>-->
+                              <!--  </multi-input>-->
+                              </div>
+                              <div class="col-md-4"><multi-input>
+                                  <!--<input list="ba" placeholder="Sélectionner /Choose ..." style ="min-width : 500px;"class="form-select" name="profile_entreprise_rechercher" id="stade_entreprise">-->
+                                  <!-- <datalist id="ba" value ="">-->
+                                   <label class="form-label "> {{ __('Profil 2') }} :</label>
+                                  <select name="profile_partenaire_rechercher_b" class="form-select" id="stade_entreprise">
+                              <option value="">{{ __('Select') }}</option>      
+                              @foreach($profil as $profilss)  
+                                    <option value="{{$profilss->libelle}}">{{$profilss->libelle}}</option>
+                                    @endforeach
+                                    </select>
+                              <!--</datalist>-->
+                              <!--  </multi-input>-->
+                              </div>
+                              <div class="col-md-4"><multi-input>
+                                  <!--<input list="ba" placeholder="Sélectionner /Choose ..." style ="min-width : 500px;"class="form-select" name="profile_entreprise_rechercher" id="stade_entreprise">-->
+                                  <!-- <datalist id="ba" value ="">-->
+                                   <label class="form-label ">{{ __('Profil 3') }} : </label>
+                                  <select name="profile_partenaire_rechercher_c" class="form-select" id="stade_entreprise">
+                              <option value="">{{ __('Select') }}</option>      
+                              @foreach($profil as $profilss)  
+                                    <option value="{{$profilss->libelle}}">{{$profilss->libelle}}</option>
+                                    @endforeach
+                                    </select>
+                              <!--</datalist>-->
+                              <!--  </multi-input>-->
                               </div>
                               
                               <div class="col-md-12">
-                                <label for="inputEmail4" class="form-label required">Plus de détails sur le type de partenaires recherché / More details on the type of partners sought :</label>
+                                <label for="inputEmail4" class="form-label">{{ __('More details on the type of partners sought') }}</label>
                                 <textarea class="form-control" name="partenaire_rechercher" id="details-partenaires"rows="3"></textarea> 
                               </div>
-                              <hr>
+                              
+                                 <hr>
                               <div class="col-12">
-                                <button type="submit" class="btn btn-violet">Continuer </button>
-                                <a href="/inscriptionstep0"><button type="button" class="btn btn-danger">Quitter</button></a>
+                                <button type="submit" class="btn btn-violet">{{ __('Continue') }} </button>
+                                <!--<a href="/inscriptionstep0"><button type="button" class="btn btn-danger">Quitter</button></a>-->
                             </div>
                             @endforeach
                           </form>
@@ -91,21 +159,7 @@
                     </div>
                         
                 </div>
-                <div class="col-6 right-part">
-                    <div class="adspace-head mt-5">
-                        <div class="text-center">
-                            <img  class ="logo-client" src="{{asset('User/assets/media/logos/logo-raf.png')}}" alt="">
-                        </div>
-                        <div class="adspace-body">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-1.jpeg')}}" alt="pub">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-2.jpeg')}}" alt="">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-3.jpeg')}}" alt="">
-                        </div>
-                        <div class="adspace-footer">
-
-                        </div>
-                    </div>
-                </div>
+               
 			</div>
 		</div>
 		

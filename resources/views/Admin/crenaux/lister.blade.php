@@ -38,16 +38,20 @@
                           <tbody>
                           @foreach ($crenaux as $creneaux)
                           <tr>
-                              <td>{{$creneaux->table_id}}</td>
-                              <td>{{$creneaux->salle_id}}</td>
+                              <td>{{$creneaux->libelle_t}}</td>
+                              <?php $salles = DB::table('salles')->where('id', $creneaux->sale_id)->get() ?>
+                              @foreach($salles as $salle)
+                              <td>{{$salle->libelle}}</td>
+                              
+                              @endforeach
                               <td>
-                              {{$creneaux->date}}
+                              {{$creneaux->date_c}}
                               </td>
                               <td>
-                              {{$creneaux->date_debut}}
+                              {{$creneaux->heure_deb}}
                               </td>
                               <td>
-                              {{$creneaux->date_fin}}
+                              {{$creneaux->heure_fin}}
                               </td>
                               <td class="text-center"> 
                               <a href="{{route('creneaux.edit', $creneaux->id)}}">

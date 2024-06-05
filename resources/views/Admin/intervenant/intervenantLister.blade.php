@@ -6,12 +6,24 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-       @include('Admin/Dashboard.sidebarUser')
+       @include('Admin/Dashboard.sideBarUser')
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
           <div class="bd">
-            <h4 class="card-title"style="margin-left:30px;"> <br>Liste des intervenants inscrites à "Event_Name"</h4>
+              <?php
+                         
+                        $evens = DB::table('events')->get();
+                        ?>
+                        @foreach($evens as $even)
+                        @if($even->status == 1)
+             <h4 class="card-title"style="margin-left:30px;"> <br>Liste des intervenants inscrites à {{$even->nom_event_fr}}</h4>
+                      @else
+                      
+                      <p></p>
+                                            @endif
+
+                      @endforeach
           </div>
             <div class="row"style="margin-top:-40px;">
                 <div class="col-12 grid-margin">
@@ -50,14 +62,13 @@
                                 <td class="text-center"> 
                                 
                                 <a href="{{route('intervenants.edit', $intervenants->id)}}">
-                                <button type="button" class="btn btn-sm "style="background:#F49800;color:white" ><i class="bi bi-gear-fill"></i></i></button>
-                              </a>
                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
-                                <form action="{{route('intervenants.destroy', $intervenants->id)}}" method="post">
+                              </a><br><br>
+                               <form action="{{route('intervenants.destroy', $intervenants->id)}}" method="post">
                                   {{ csrf_field() }}
                                   @method('DELETE')
-                                <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
-                                </form>
+                                <button type="submit" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                                </form> 
                               </td>
                             </tr>
                             @endforeach

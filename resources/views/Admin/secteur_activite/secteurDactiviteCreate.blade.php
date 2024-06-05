@@ -31,9 +31,12 @@
                         <label for="exampleInputName1">Libellé du secteur d'activité : (<span class="red">*</span>)</label>
                         <input type="text" class="form-control" name="libelle" id="exampleInputName1" placeholder="Libellé du secteur d'activité">
                       </div>
-                    
+                     <?php 
+                            $even = DB::table('events')->where('status', '=', 1)->first();
+                       ?>
+                       <input class="form-control" value="{{$even->id}}" type="hidden" style="width:100%; height:50px; " name="event_id" placeholder="event">
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
-                      <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
+                      <a href="/secteuractivites" class="btn " style="background:#C92C2B; color:white">Quitter</a>
                     </form>
                   </div>
                 </div>

@@ -57,7 +57,7 @@ trait ZoomMeetingTrait
     public function created($data)
     {
         $path = 'users/me/meetings';
-        $url = $this->retrieveZoomUrl();
+        $url = "https://api.zoom.us/v2/";
 
         $body = [
             'headers' => $this->headers,
@@ -70,12 +70,14 @@ trait ZoomMeetingTrait
                 'timezone'     => 'Africa/Alger',
                 'settings'   => [
                     'host_video'        => ($data['host_video'] == "1") ? true : false,
-                    'participant_video' => ($data['participant_video'] == "1") ? true : false,
-                    'waiting_room'      => true
+                    'participant_video' => false,
+                    'join_before_host'=> true,
+                    'waiting_room'      => false,
+                    'mute_upon_entry'=> true,
                 ],
             ]),
         ];
-
+        
         $response =  $this->client->post($url.$path, $body);
 
        

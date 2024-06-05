@@ -1,33 +1,4 @@
-<!DOCTYPE html>
-<!--
-Author: Keenthemes
-Product Name: Rider Free  - Multipurpose Bootstrap 5 HTML Admin Dashboard Template
-Upgrade to Pro: https://keenthemes.com/products/rider-html-pro
-Website: http://www.keenthemes.com
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
-<html lang="en">
-	<!--begin::Head-->
-	<head><base href="">
-		<meta charset="utf-8" />
-		<title>OptiEvent | Mes confirmations de rendez-vous</title>
-		<meta name="description" content="Rider admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
-		<meta name="keywords" content="Rider, bootstrap, bootstrap 5, dmin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
-		<link rel="canonical" href="Https://preview.keenthemes.com/rider-free" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
-		<!--begin::Fonts-->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
-		<!--end::Fonts-->
-		<!--begin::Global Stylesheets Bundle(used by all pages)-->
-		<link href="src/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="{{asset('User/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-		<!--end::Global Stylesheets Bundle-->
-	</head>
+@include('User/head')
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed">
@@ -49,103 +20,7 @@ License: For each use you must have a valid license purchased only from above li
 					<!--end::Brand-->
                     <div class="aside-menu flex-column-fluid px-3 px-lg-6">
 						<!--begin::Aside Menu-->
-						<!--begin::Menu-->
-						<div class="menu menu-column menu-pill menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-arrow-gray-500 menu-active-bg-primary fw-bold fs-5 my-5 mt-lg-2 mb-lg-0" id="kt_aside_menu" data-kt-menu="true">
-							<div class="hover-scroll-y me-n3 pe-3" id="kt_aside_menu_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-offset="20px">
-								<div class="menu-item mb-1">
-									<a class="menu-link" href="index.html">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<rect x="0" y="0" width="24" height="24" />
-														<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-														<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-													</g>
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Tableau de Bord</span>
-									</a>
-								</div>
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                                    <a class="menu-link active" href="/resources/views/User/theme/dist/confirmations.html">
-									<span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/Interface/Lock.svg-->
-											<span class="svg-icon svg-icon-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-dots" viewBox="0 0 16 16">
-                                                    <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
-                                                    <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                                                  </svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Confirmations de rendez-vous</span>  
-										
-									</span>
-                                </a>
-								
-								</div>
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-									<span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/Interface/Lock.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
-                                                    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
-                                                  </svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Catalogue</span>  
-										
-									</span>
-								
-								</div>
-							
-								
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-									<span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/Interface/Lock.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<polygon points="0 0 24 0 24 24 0 24" />
-														<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-														<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
-													</g>
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Mon Profil</span>  
-										
-									</span>
-								
-								</div>
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-									<span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/Interface/Lock.svg-->
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16">
-                                                <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
-                                                <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
-                                              </svg>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Mon Entreprise</span>  	
-									</span>
-								</div>	
-							</div>
-						</div>
-						<!--end::Menu-->
-					</div>
-				
-
+					                @include('User/sidebar')
 					<!--begin::Footer-->
 				
 					<!--end::Footer-->
@@ -160,7 +35,7 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Page title-->
 							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-2 mb-5 mb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
 								<!--begin::Heading-->
-								<h1 class="text-dark fw-bolder mt-1 mb-1 fs-2">Confirmation de rendez-vous 
+								<h1 class="text-dark fw-bolder mt-1 mb-1 fs-2">{{__('Appointment confirmation')}}
 								<small class="text-muted fs-6 fw-normal ms-1"></small></h1>
 								<!--end::Heading-->
 								<!--begin::Breadcrumb-->
@@ -244,7 +119,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 									<!--begin::Menu wrapper-->
 									<div class="cursor-pointer symbol symbol-circle symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-										<img alt="Pic" src="assets/media/avatars/150-26.jpg" />
+										<img alt="Pic" src="{{asset('User/assets/media/avatars/150-26.jpg')}}" />
 									</div>
 									<!--begin::Menu-->
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -272,12 +147,12 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Menu separator-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5">
-											<a href="account/overview.html" class="menu-link px-5">Profile</a>
+											<a href="/monprofils" class="menu-link px-5">{{__('Profile')}</a>
 										</div>
 										<!--end::Menu item-->
                                         <!--begin::Menu item-->
 										<div class="menu-item px-5">
-											<a href="account/overview.html" class="menu-link px-5">Entreprise</a>
+											<a href="/monentreprises" class="menu-link px-5">{{__('Company')}</a>
 										</div>
 										<!--end::Menu item-->
 									
@@ -288,14 +163,20 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Menu separator-->
 										
 										<!--begin::Menu item-->
-										<div class="menu-item px-5 my-1">
-											<a href="#" class="menu-link px-5">Paramètres du compte
-                                            </a>
-										</div>
+										<!--<div class="menu-item px-5 my-1">-->
+										<!--	<a href="#" class="menu-link px-5">Paramètres du compte-->
+          <!--                                  </a>-->
+										<!--</div>-->
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5">
-											<a href="#" class="menu-link px-5"> Déconnexion</a>
+											<a href="{{ url('/logout') }}" class="nav-link"
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    Déconnexion
+                                                    </a>
+                                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    </form>
 										</div>
 										<!--end::Menu item-->
 									</div>
@@ -315,8 +196,8 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::FAQ-->
 							<div class="card">
                                 <div class="card-header">
-                                    <h4 class="mt-2">Mes demandes de rendez-vous </h4>
-                                    <p class="texte-nice">Certains participants souhaitent vous rencontrer, passez en revue vos demandez de rendez-vous et valider celles qui vous intérèssent</p>
+                                    <h4 class="mt-2">{{__('My appointment requests')}} </h4>
+                                    <p class="texte-nice">{{__('Some participants would like to meet with you, review your appointment requests and validate those that interest you')}}</p>
                                 </div>
 								<!--begin::Card body-->
 								<div class="card-body">
@@ -325,28 +206,60 @@ License: For each use you must have a valid license purchased only from above li
                                             <thead>
                                                 <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
                                                     <th>Participant</th>
-                                                    <th>Entreprise</th>
-                                                    <th>Fonction</th>
-                                                    <th>Secteur d'activité</th>
-                                                    <th>Profil</th>
+                                                    <th>{{__('Function')}}</th>
+                                                    <th>{{__('Company')}}</th>
+                                                    <th>{{__('Sector of activity')}}</th>
+                                                    <th>{{__('Profile')}}</th>
+                                                    <th>{{__('Status')}}</th>
                                                     <th>Options</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                 @foreach($planning_fs as $planning_f)
                                                 <tr>
-                                                    <td><a href="#">Nonguierma Axel</a></td>
-                                                    <td><a href="#">ILLIMTIS SAS</a></td>
-                                                    <td>Responsable projets Digitaux</td>
+                                                    <?php $user = DB::table('users')->where('id', $planning_f->user_id)->first() ?>
+
+                                                    <td>
+                                                        @if($user)
+                                                            <a href="#">{{$user->prenom}} {{$user->nom}}</a></td>
+                                                        @else
+                                                            <a href="#">~ ~</a></td>
+                                                        @endif
+                                                   
                                                     <td>Digital, Formation</td>
-                                                    <td>Consultant</td>
-                                                
+                                                    
+                                                    <?php $entreprises = DB::table('entreprises')->where('id', '=', $planning_f->entreprise_id)->get() ?>
+                                                    
+                                                    @foreach($entreprises as $entreprise)
+                                                    <td><a href="#">{{$entreprise->nom_entreprise}}</a></td>
+                                                   <td>{{$entreprise->secteur_a}}</td>
+                                                    
+                                                     <td>{{$entreprise->profile_entreprise_a}}</td>
+                                                     
+                                                     @endforeach
+                                                    
+                                                  
+                                                   
+                                                   @if($planning_f->etats == 10)
+                                                    <td> <span class="badge badge-warning">{{__('Pending')}} ...</span></td>
+                                                   @elseif($planning_f->etats == 0)
+                                                    <td><span class="badge badge-danger">{{__('Refused')}}</span></td>
+                                                   @else
+                                                    <td><span class="badge badge-primary">{{__('Validated')}}</span> </td>
+                                                   @endif
                                                     <td class="options-td"> 
-                                                        <button class="btn btn-primary">Valider</button>
-                                                        <button class="btn btn-danger">Refuser</button>
+                                                        <form method="POST" action="{{route('confirmer.souhait', $planning_f->id)}}">
+                                                            {{ csrf_field() }}
+                                                             <button type="submit" id="p1"  class="btn btn-primary">{{__('Confirm')}} </button>
+                                                        </form>
+                                                         <form method="POST" action="{{route('Notconfirmer.souhait', $planning_f->id)}}">
+                                                            {{ csrf_field() }}
+                                                             <button type="submit" id="p1"  class="btn btn-danger">{{__('Cancel')}}</button>
+                                                        </form>
                                                      
                                                     </td>
                                                 </tr>
-                                              
+                                              @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -359,34 +272,62 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::FAQ-->
 							<div class="card">
                                 <div class="card-header">
-                                    <h4 class="mt-2">Statut de mes souhaits de rendez-vous </h4>
-                                    <p class="texte-nice">Staut de vos souhaits de rendez-vous </p>
+                                    <h4 class="mt-2">{{__('Status of my appointment requests')}} </h4>
+                                    
                                 </div>
 								<!--begin::Card body-->
 								<div class="card-body">
                                     <div class="table-responsive">
-                                        <table style ="width: 100%;" class="table table-hover table-striped border gy-7 gs-7">
+                                        <table id="datatable-buttons" style ="width: 100%;" class="table table-hover table-striped border gy-7 gs-7  table table-striped table-bordered">
                                             <thead>
                                                 <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
                                                     <th>Participant</th>
-                                                    <th>Entreprise</th>
-                                                    <th>Fonction</th>
-                                                    <th>Secteur d'activité</th>
-                                                    <th>Profil</th>
-                                                    <th>Staut</th>
+                                                   <th>{{__('Function')}}</th>
+                                                    <th>{{__('Company')}}</th>
+                                                    <th>{{__('Sector of activity')}}</th>
+                                                    <th>{{__('Profile')}}</th>
+                                                    <th>{{__('Status')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach($souhaits as $planning_f)
                                                 <tr>
-                                                    <td><a href="#">Fallou Gueye</a></td>
-                                                    <td><a href="#">ILLIMTIS SAS</a></td>
-                                                    <td>Responsable technique</td>
-                                                    <td>Digital, Formation</td>
-                                                    <td>Consultant</td>
-                                                    <td><span class="badge badge-success">Confirmé</span></td>
+                                                    <?php $user = DB::table('users')->where('id', $planning_f->user_id)->first() ?>
+
+                                                    <td>
+                                                        @if($user)
+                                                            <a href="#">{{$user->prenom}} {{$user->nom}}</a></td>
+                                                        @else
+                                                            <a href="#">~ ~</a></td>
+                                                        @endif
+                                                    
+                                                    
+                                                    <?php $entreprises = DB::table('entreprises')->where('id', '=', $planning_f->entreprise_id)->get() ?>
+                                                    
+                                                    
+                                                    <!--<td>Digital, Formation</td>-->
+                                                    @foreach($entreprises as $entreprise)
+                                                    <td><a href="#">{{$entreprise->nom_entreprise}}</a></td>
+                                                   <td>{{$entreprise->secteur_a}}</td>
+                                                    
+                                                     <td>{{$entreprise->profile_entreprise_a}}</td>
+                                                     
+                                                     @endforeach
+                                                    
                                                 
+                                                      
+                                                   @if($planning_f->etats == 0)
+                                                    <td>
+                                                        <span class="badge badge-warning">{{__('Pending')}}</span>
+                                                    </td>
+                                                   @else
+                                                   <td>
+                                                        <span class="badge badge-danger">{{__('Confirm')}}</span>
+                                                    </td>
+                                                   @endif
+                                                   
                                                 </tr>
-                                              
+                                              @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -403,18 +344,18 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Container-->
 						<div class="container-fluid d-flex flex-column flex-md-row flex-stack">
 							<!--begin::Copyright-->
-							<div class="text-dark order-2 order-md-1">
-								<span class="text-gray-400 fw-bold me-1">Made With Love By </span>
-								<a href="www.illimitis.com" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">ILLIMITIS</a>
-							</div>
-							<!--end::Copyright-->
-							<!--begin::Menu-->
-							<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
-								<li class="menu-item">
-									Partenaire : Rebranding Africa Forum
-								</li>
-								
-							</ul>
+							 <div class="text-dark order-2 order-md-1">
+                    <span class="text-gray-400 fw-bold me-1">Made With Love By </span>
+                    <a href="https://illimitis.com/" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">ILLIMITIS</a>
+                    </div>
+                    <!--end::Copyright-->
+                    <!--begin::Menu-->
+                    <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
+                    <li class="menu-item">
+                    Partenaire : Salon International du Coton et du Textile de Ouagadougou
+                    </li>
+                    
+                    </ul>
 							<!--end::Menu-->
 						</div>
 						<!--end::Container-->
@@ -1084,16 +1025,66 @@ License: For each use you must have a valid license purchased only from above li
 			</span>
 			<!--end::Svg Icon-->
 		</div>
-		<!--end::Scrolltop-->
+	<!--end::Scrolltop-->
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
-		<script src="assets/plugins/global/plugins.bundle.js"></script>
-		<script src="assets/js/scripts.bundle.js"></script>
+		
+		<script src="{{asset('User/assets/plugins/global/plugins.bundle.js')}}"></script>
+		<script src="{{asset('User/assets/js/scripts.bundle.js')}}"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="assets/js/custom/widgets.js"></script>
+		<script src="{{asset('User/assets/js/custom/widgets.js')}}"></script>
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
+		
+			<script src="{{asset('User/assets/plugins/global/plugins.bundle.js')}}"></script>
+		<script src="{{asset('User/assets/js/scripts.bundle.js')}}"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="{{asset('User/assets/js/custom/widgets.js')}}"></script>
+		<!--end::Page Custom Javascript-->
+		<!--end::Javascript-->
+		
+		  <!-- jQuery  -->
+   <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+   <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+   <script src="{{asset('assets/js/detect.js')}}"></script>
+   <script src="{{asset('assets/js/fastclick.js')}}"></script>
+   <script src="{{asset('assets/js/jquery.blockUI.js')}}"></script>
+   <script src="{{asset('assets/js/waves.js')}}"></script>
+   <script src="{{asset('assets/js/wow.min.js')}}"></script>
+   
+   <!-- Datatables-->
+   <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/dataTables.bootstrap.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/dataTables.buttons.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/buttons.bootstrap.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/jszip.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/pdfmake.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/vfs_fonts.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/buttons.html5.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/buttons.print.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/dataTables.fixedHeader.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/dataTables.keyTable.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/dataTables.responsive.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/responsive.bootstrap.min.js')}}"></script>
+   <script src="{{asset('assets/plugins/datatables/dataTables.scroller.min.js')}}"></script>
+   
+   <!-- Datatable init js -->
+   <script src="{{asset('assets/pages/datatables.init.js')}}"></script>
+   
+   <script src="{{asset('assets/js/jquery.app.js')}}"></script>
+   
+   <script type="text/javascript">
+   $(document).ready(function() {
+       $('#datatable').dataTable();
+       $('#datatable-keytable').DataTable( { keys: true } );
+       $('#datatable-responsive').DataTable();
+       $('#datatable-scroller').DataTable( { ajax: "{{asset('assets/plugins/datatables/json/scroller-demo.json')}}", deferRender: true, scrollY: 380, scrollCollapse: true, scroller: true } );
+       var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
+   } );
+   TableManageButtons.init();
+   </script>
 	</body>
 	<!--end::Body-->
 </html>

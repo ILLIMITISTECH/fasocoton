@@ -53,17 +53,28 @@
                         <label for="exampleInputName1">Nom de l'évènement en Anglais: (<span class="red">*</span>)</label>
                         <input type="text" class="form-control" name="nom_event_en" value="{{$even->nom_event_en}}" placeholder="Name">
                       </div>
+                       <div class="form-group">
+                        <label for="exampleInputName1">Max de rendez_vous: </label>
+                        <input type="number" class="form-control" value="{{$even->max}}" name="max" placeholder="Max de rendez_vous">
+                      </div>
                       <div class="form-group">
                         <label for="website">Site Web : (Optionnel)</label>
                         <input type="link" class="form-control" name="site" value="{{$even->site}}" placeholder="Site Web">
                       </div>
-                      <!-- <div class="form-group">
-                        <label for="exampleSelectGender">Quel est le format de l'évènement ? (<span class="red">*</span>)</label>
-                        <select class="form-control" id="exampleSelectGender">
-                          <option>En ligne</option>
-                          <option>Hors ligne</option>
+                      <div class="form-group">
+                        <label for="exampleSelectGender">L'organisateur (<span class="red">*</span>)</label>
+                        <select class="form-control" name="organisateur_id" id="exampleSelectGender">
+                         <?php $orga = DB::table('organisateurs')->where('id', $even->organisateur_id)->first(); ?> 
+                         @if($orga)
+                          <option value="{{$even->organisateur_id}}">{{$orga->prenom}} {{$orga->nom}}</option>
+                          @else
+                          <option value="{{$even->organisateur_id}}">Séléctionner</option>
+                          @endif
+                          @foreach($organisateurs as $organisateur)
+                          <option value="{{$organisateur->id}}">{{$organisateur->prenom}} {{$organisateur->nom}}</option>
+                          @endforeach
                         </select>
-                      </div> -->
+                      </div> 
                       <div class="row">
                         <div class="form-group col-md-6">
                             <label class="col-form-label">Date de début : (<span class="red">*</span>)</label>
