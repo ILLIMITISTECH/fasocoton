@@ -11,18 +11,18 @@
         <div class="main-panel">
           <div class="content-wrapper">
           <div class="bdc">
-            <h4 class="card-title"style="margin-left:30px;"> <br>Ajouter un participant</h4>
+            <h4 class="card-title"style="margin-left:30px;"> <br>Ajouter un pré-inscrit</h4>
           </div>
             <div class="col-12 grid-margin stretch-card"style="margin-top:-40px">
                 <div class="card">
-                        @if (session('message'))
+                        @if(session('message'))
                         <div class="alert alert-success" role="alert">
                         {{ session('message') }}
                         </div>  
                         @endif
                   <div class="card-body">
                     
-                    <p class="card-description">Remplissez ce formulaire pour ajouter un participant</p>
+                    <p class="card-description">Remplissez ce formulaire pour ajouter un utilisateur en pré-inscription</p>
                     <form class="forms-sample"  action="{{route('participants.store')}}" method="post" enctype="multipart/form-data">
                           {{ csrf_field() }}
                       <div class="form-group">
@@ -39,19 +39,21 @@
                       </div>
                     
                           <div class="row">
-                              <div class="form-group col-md-6">
-                                  <label for="exampleSelectGender">Entreprise du Participant</label>
-                                  <select class="form-control" name="entreprise_id" id="stade_entreprise">
-                                 
+                              
+                            <!--<div class="form-group col-md-6">
+                                  <label for="exampleSelectGender">Est-ce un utilisateur avec une entreprise ?</label>
+                                  <select class="form-control" name="need" id="">
+                                        <option value="1">Oui, je renseigne les informations de son entreprise</option>
+                                        <option value="0">Non, il rejoint en tant que simple participant </option>
                                   </select>
-                            </div>
+                            </div>-->
                               <div class="form-group col-md-6">
-                                <label for="exampleSelectGender">Fonction du participant</label>
+                                <label for="exampleSelectGender">Fonction de l'utilisateur</label>
                                 <input type="text" name="fonction" class="form-control" id="fonction" placeholder="fonction du participant">
-                              </div>
+                              </div> 
                           
                            <div class="form-group col-md-6">
-                            <label for="exampleSelectGender">Téléphone du participant</label>
+                            <label for="exampleSelectGender">Téléphone de l'utilisateur</label>
                             <input type="text" name="tel_part" class="form-control" id="777....." placeholder="téléphone du participant">
                           </div>
 
@@ -59,23 +61,36 @@
                           <div class="form-group col-md-6">
                             <label for="exampleInputPassword1">Langue : (<span class="red">*</span>)</label>
                             <select class="form-control" name="langue_id" id="stade_entreprise" placeholder="Langue">>
-                           
+                            @foreach($langue as $langues)  
+                                <option value="{{$langues->id}}">{{$langues->libelle_eng}}</option>
+                            @endforeach  
                             </select>
                           </div>
+                   <?php 
+                            $even = DB::table('events')->where('status', '=', 1)->first();
+                       ?>
+                       <input class="form-control" value="{{$even->id}}" type="hidden" style="width:100%; height:50px; " name="event_id" placeholder="event">
 
                          <div class="form-group col-md-6">
                             <label for="exampleInputConfirmPassword1">Pays : (<span class="red">*</span>)</label>
                             <select class="form-control" name="pays_id" id="stade_entreprise"placeholder="Pays">>
-                            
-                            </select><br><br>
+                            @foreach($pays as $pay)  
+                                <option value="{{$pay->id}}">{{$pay->libelle_fr}}</option>
+                            @endforeach                            </select><br><br>
                         </div>
-                        <div class="form-group col-md-6">
+                        
+                        <!--<div class="form-group col-md-6">
                             <label for="exampleInputConfirmPassword1">Presence : (<span class="red">*</span>)</label>
-                            <input type="tinyint" name="presence" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
-                        </div>
+                            <div style="width:50px">
+                            <input type="radio" name="presence" class="form-control" id="exampleInputConfirmPassword1" value="1" placeholder="Password">Oui
+                            <input type="radio" name="presence" class="form-control" id="exampleInputConfirmPassword1" value="2" placeholder="Password">Non
+                           </div> 
+                        </div>-->
+                        
                         </div>  
+                        
                         <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
-                      <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
+                      <a href="/participants" class="btn " style="background:#C92C2B; color:white">Quitter</a>
                     </form>
                   </div>
                 </div>

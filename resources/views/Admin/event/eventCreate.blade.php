@@ -37,17 +37,22 @@
                         <input type="text" class="form-control" name="nom_event_en" placeholder="Name">
                       </div>
                       <div class="form-group">
+                        <label for="exampleInputName1">Max de rendez_vous: </label>
+                        <input type="number" class="form-control" name="max" placeholder="Max de rendez_vous">
+                      </div>
+                      <div class="form-group">
                         <label for="website">Site Web : (Optionnel)</label>
                         <input type="link" class="form-control" name="site" placeholder="Site Web">
                       </div>
-                      <!-- <div class="form-group">
-                        <label for="exampleSelectGender">Quel est le format de l'évènement ? (<span class="red">*</span>)</label>
-                        <select class="form-control" id="exampleSelectGender">
-                          <option>En ligne</option>
-                          <option>Hors ligne</option>
-                          <option>Hybride</option>
+                       <div class="form-group">
+                        <label for="exampleSelectGender">L'organisateur (<span class="red">*</span>)</label>
+                        <select class="form-control" name="organisateur_id" id="exampleSelectGender" required>
+                          <option value="">Séléctionner</option>
+                          @foreach($organisateurs as $organisateur)
+                          <option value="{{$organisateur->id}}">{{$organisateur->prenom}} {{$organisateur->nom}}</option>
+                          @endforeach
                         </select>
-                      </div> -->
+                      </div> 
                       
                       <div class="form-group">
                         <label for="website">Lieu de l'évènement</label>
@@ -67,9 +72,7 @@
                             </div>
                         </div>
                     </div>
-
-                    
-                    
+                     
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
                       <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
                     </form>

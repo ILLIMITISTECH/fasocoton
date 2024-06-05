@@ -25,7 +25,7 @@
                     </h6>
                     
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
-                      <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
+                      <a href="/homes" class="btn " style="background:#C92C2B; color:white">Quitter</a>
                    
                   </div>
                 </div>

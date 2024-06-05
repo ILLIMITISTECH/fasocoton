@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Type;
+use DB;
 class TypeController extends Controller
 {
     /**
@@ -13,7 +14,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = DB::table('types')->get();
+        
+        return view('Admin/type.typeLister', compact('types'));
     }
 
     /**
@@ -23,7 +26,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin/type.typeCreate');
     }
 
     /**
@@ -34,7 +37,13 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = 'Type ajouté avec succés';
+
+        $type = new Type;
+        $type->libelle = $request->get('libelle');
+        $type->save();
+        
+        return back()->with(['message' => $message]);
     }
 
     /**
@@ -56,7 +65,8 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $type = Type::find($id);
+        return view('Admin/type.typeEdit', compact('type'));
     }
 
     /**
@@ -68,7 +78,13 @@ class TypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = 'Type modifié ';
+
+        $type = Type::find($id);
+        $type->libelle = $request->get('libelle');
+        $type->save();
+        
+        return redirect('/types')->with(['message' => $message]);
     }
 
     /**
@@ -79,6 +95,9 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $type = Type::find($id);
+        $type->delete();
+         
+        return back()->with('info', "Evénement supprimée dans la base de donnée.");
     }
 }

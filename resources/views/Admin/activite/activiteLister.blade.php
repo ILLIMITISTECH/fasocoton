@@ -25,8 +25,8 @@
                               <th>Libellé </th>
                               <th> Date </th>
                               <th class="text-center"> Heure </th>
+                              <th class="text-center"> Code</th>
                               <th class="text-center"> Lien zoom</th>
-
                               <th class="text-center"> Duration </th>
                               <th class="text-center"> Options</th>
                             </tr>
@@ -41,17 +41,29 @@
                               <td class="text-center">
                               {{$activite->heure_debut}}  {{$activite->heure_fin}}
                               </td>
-  
+                              <td class="text-center">
+                                  <input style="width:50px; border:none; background:#F8FAFB" type="text" id="copy_{{$activite->id}}" onclick="copyToClipboard('copy_{{$activite->id}}')" value="{{$activite->password}}">
+                              </td>
+                              
                               <td class="text-center"> 
-                              <a href="{{$activite->join_url}}" class="btn  btn-sm"style="background:#0D71EB;color:white">Join</a>
+                                 <a href="{{$activite->join_url}}" class="btn  btn-sm"style="background:#0D71EB;color:white">Join</a>
                               </td>
                              
                               <td class="text-center">
                               {{$activite->duration}}H
                               </td>
                               <td class="text-center"> 
+                              <div class ="option-column">
+                               <a href="{{route('activites.edit', $activite->id)}}">
                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
-                                <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                            </a>
+                                <form action="{{route('activites.destroy', $activite->id)}}" method="post">
+                                  {{ csrf_field() }}
+                                  @method('DELETE')
+                                <button type="submit" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                                </form> 
+                                 
+                            </div>
                               </td>
                             </tr>
                             @endforeach
@@ -80,6 +92,13 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script>
+        function copyToClipboard(id) {
+            document.getElementById(id).select();
+            document.execCommand('copy');
+        }
+    </script>
     @include('Admin/Dashboard.js')
+    
   </body>
 </html>

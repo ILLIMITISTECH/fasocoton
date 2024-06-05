@@ -40,6 +40,7 @@ class SecteurActiviteController extends Controller
 
         $secteur_activites = new Secteur_activite;
         $secteur_activites->libelle = $request->get('libelle');
+         $participant->event_id = $request->get('event_id');
         $secteur_activites->save();
         return back()->with(['message' => $message]);
     }
@@ -60,7 +61,7 @@ class SecteurActiviteController extends Controller
     {
         $secteur_activites = Secteur_activite::find($id);
 
-        return view('Admin/secteur_activite.edit', compact('secteur_activites'));
+        return view('Admin/secteur_activite.secteurDactiviteEdit', compact('secteur_activites'));
     }
 
     

@@ -45,6 +45,7 @@ class profilController extends Controller
 
         $profils = new Profil;
         $profils->libelle = $request->get('libelle');
+         $profils->event_id = $request->get('event_id');
         $profils->save();
        
         return back()->with(['message' => $message]);

@@ -31,10 +31,12 @@
         <!-- partial:partials/_sidebar.html -->
         @include('Admin/Dashboard.sideBarUser')
         <!-- partial -->
+        
         <div class="main-panel">
+            
           <div class="content-wrapper">
           <div class="bdc">
-            <h4 class="card-title"style="margin-left:30px;"> <br>Configurer un évènement</h4>
+            <h4 class="card-title"> <br>Configurer un évènement</h4>
           </div>
           <div class="col-12 grid-margin stretch-card" style="margin-top:-40px">
                 <div class="card">
@@ -48,82 +50,181 @@
                     </h6>
                     <h4 class="card-title">Programmez les différentes phases de votre évènement !</h4>
                     <br>
+                   
+                     <center>
+                      
+                                    <div>
+                                    @if($even->phase == 0)
+                                    <b style="color:grey; margin-left:70px">Phases terminées&nbsp;<i class="fa fa-flag"></i></b>
+                                    @elseif($even->phase == 1)
+                                    <b style="color:#4b2e99">Inscriptions en cours <i class="fas fa-cog fa-spin"></i></i></b>
+                                    @elseif($even->phase == 2)
+                                    <b style="color:#4b2e99">Suggestions en cours <i class="fas fa-cog fa-spin"></i></b>
+                                    @elseif($even->phase == 3)
+                                    <b style="color:#4b2e99">Confirmation des souhaits <i class="fas fa-cog fa-spin"></i></b>
+                                    @else
+                                    <b style="color:#4b2e99">Planning en cours <i class="fas fa-cog fa-spin"></i></b>
+                                    @endif
+                                    </div>
+                                    
+                                </center>
+                        
+                        <br>
                       <div class="row">
                         <div class="row col-md-6 align-items-start">
                           <label for="col-form-label"><br>Phase d’inscription des participants</label>
                         
                         </div>
                         <div class="row col-md-3 align-items-center">
-                        <label class="col-form-label"><b>Date de début :</b></label>
-                            <div class="">
-                            <input type="date" class="form-control" name="date_debut" placeholder="dd/mm/yyyy" />
-                            </div>
-                        </div>
-                        <div class="row col-md-3 align-items-end">
-                          <label class="col-form-label"><b>Date de fin :</b></label>
-                            <div class="">
-                            <input type="date" class="form-control" name="date_fin" placeholder="dd/mm/yyyy" />
-                            </div>
+                        @if($even->status == 1)
+                                    @if($even->phase == 1)
+                                    <form method="POST" action="{{route('phase_1.event', $even->id)}}">
+                                        {{ csrf_field() }}
+                                         <button type="submit" id="p1"  class="btn btn-dark" style="background:#480099" disabled>Inscriptions</button>
+                                    </form>
+                                    @else
+                                     <form method="POST" action="{{route('phase_1.event', $even->id)}}">
+                                         {{ csrf_field() }}
+                                         <button type="submit" id="p1"  class="btn btn-dark"style="background:#480099">Inscriptions</button>
+                                    </form>
+                                    @endif
+                    
                         </div>
                       </div>
+                      <br><br><br>
                       <div class="row">
                         <div class="row col-md-6 align-items-start">
                           <label for="col-form-label"><br>Phase suggestions et d’ajout de rendez-vous</label>
                         
                         </div>
+                        
+                                
                         <div class="row col-md-3 align-items-center">
-                        <label class="col-form-label"><b>Date de début :</b></label>
-                            <div class="">
-                            <input type="date" class="form-control" name="date_debut" placeholder="dd/mm/yyyy" />
-                            </div>
-                        </div>
-                        <div class="row col-md-3 align-items-end">
-                        <label class="col-form-label"><b>Date de fin :</b></label>
-                            <div class="">
-                            <input type="date" class="form-control" name="date_fin" placeholder="dd/mm/yyyy" />
-                            </div>
-                        </div>
+                       @if($even->phase == 2)
+                                    <form method="POST" action="{{route('phase_2.event', $even->id)}}">
+                                        {{ csrf_field() }}
+                                         <button type="submit" id="p2"  class="btn btn-dark"style="background:#480099" disabled>Suggestion</button>
+                                    </form>
+                                    @else
+                                     <form method="POST" action="{{route('phase_2.event', $even->id)}}">
+                                         {{ csrf_field() }}
+                                         <button type="submit" id="p2" class="btn btn-dark"style="background:#480099">Suggestion</button>
+                                    </form>
+                                    @endif
                       </div>
-                      <div class="row">
+                      </div>
+                      
+                      <!--<div class="row">
                         <div class="row col-md-6 align-items-start">
-                          <label for="col-form-label"><br>Phase de confirmation des rendez-vous</label>
+                          <label for="col-form-label" style=margin-left:20px><br>Phase de confirmation des rendez-vous</label>
                         
                         </div>
                         <div class="row col-md-3 align-items-center">
-                            <label class="col-form-label"><b>Date de début :</b></label>
-                            <div class="">
-                            <input type="date" class="form-control" name="date_debut" placeholder="dd/mm/yyyy" />
-                            </div>
-                        </div>
-                        <div class="row col-md-3 align-items-end">
-                        <label class="col-form-label"><b>Date de fin :</b></label>
-                            <div class="">
-                            <input type="date" class="form-control" name="date_fin" placeholder="dd/mm/yyyy" />
-                            </div>
-                        </div>
-                      </div>
+                          @if($even->phase == 3)
+                                    <form method="POST" action="{{route('phase_3.event', $even->id)}}">
+                                        {{ csrf_field() }}
+                                         <button type="submit" id="p3"  class="btn btn-dark"style="background:#480099" disabled>Confirmation</button>
+                                    </form>
+                                    @else
+                                     <form method="POST" action="{{route('phase_3.event', $even->id)}}">
+                                         {{ csrf_field() }}
+                                         <button type="submit" id="p3"  class="btn btn-dark" style="background:#480099">Confirmation</button>
+                                    </form>
+                                    @endif
+                    
+                      </div>-->
+
+                      <br><br><br>
                       <div class="row">
                         <div class="row col-md-6 align-items-start">
-                          <label for="col-form-label"><br>Génération des plannings </label>
+                          <label for="col-form-label" style=margin-left:40px><br>Génération des plannings </label>
                         
                         </div>
-                        <div class="row col-md-3 align-items-center">
-                        <label class="col-form-label"><b>Date de début :</b></label>
-                            <div class="">
-                            <input type="date" class="form-control" name="date_debut" placeholder="dd/mm/yyyy" />
-                            </div>
-                        </div>
-                        <div class="row col-md-3 align-items-end">
-                        <label class="col-form-label"><b>Date de fin :</b></label>
-                            <div class="">
-                            <input type="date" class="form-control" name="date_fin" placeholder="dd/mm/yyyy" />
-                            </div>
-                        </div>
+                         @if($even->phase == 4)
+                                    <form method="POST" action="{{route('phase_4.event', $even->id)}}">
+                                        {{ csrf_field() }}
+                                         <button type="submit" id="p4"  class="btn btn-dark"style=background:#480099 disabled>Plannings</button>
+                                    </form>
+                                    @else
+                                     <form method="POST" action="{{route('phase_4.event', $even->id)}}">
+                                         {{ csrf_field() }}
+                                         <button type="submit" id="p4" class="btn btn-dark"style="background:#480099;padding: 14px 45px">Plannings</button>
+                                         
+                                    </form>
+                                    @endif
+
                       </div>
+                      
+                      <br><br><br>
+                      <div class="row">
+                        <div class="row col-md-6 align-items-start">
+                          <label for="col-form-label" style=margin-left:40px><br>Génération des plannings </label>
+                        
+                        </div>
+                         @if($even->phase_rvs == 5)
+                                    <form method="POST" action="{{route('phase_5_rvs.event', $even->id)}}">
+                                        {{ csrf_field() }}
+                                         <button type="submit" id="p4"  class="btn btn-dark"style=background:#480099 disabled>Last Plannings</button>
+                                    </form>
+                                    @else
+                                     <form method="POST" action="{{route('phase_5_rvs.event', $even->id)}}">
+                                         {{ csrf_field() }}
+                                         <button type="submit" id="p4" class="btn btn-dark"style="background:#480099;padding: 14px 45px">Last Plannings</button>
+                                         
+                                    </form>
+                                    @endif
+
+                      </div>
+                      <br><br><br>
+                                    <div class="row">
+                        <div class="row col-md-6 align-items-start"> 
+                        </div>         
+                        <div class="row col-md-3 align-items-center">
                     
-                    
+                        <form method="POST" action="{{route('phase_des.event', $even->id)}}">
+                                 {{ csrf_field() }}
+                                <button type="submit" id="p4" class="btn btn-dark"  style="padding: 14px 50px">Terminer</button>
+                            </form>   
+                      </div>
+                      </div>
+                                 
+                        
+                        
+                        @else
+                            <form method="POST" action="{{route('phase_1.event', $even->id)}}">
+                                 {{ csrf_field() }}
+                                <button type="submit" id="p1" class="btn btn-dark"disabled>Inscriptions</button>
+                             </form>
+                            
+                            <form method="POST" action="{{route('phase_2.event', $even->id)}}">
+                                 {{ csrf_field() }}
+                                <button type="submit" id="p2" class="btn btn-success" disabled>Suggestions</button>
+                             </form>
+                            
+                             <form method="POST" action="{{route('phase_3.event', $even->id)}}">
+                                 {{ csrf_field() }}
+                                <button type="submit" id="p3" class="btn btn-dark"disabled>Confirmation</button>
+                             </form>
+                            
+                              <form method="POST" action="{{route('phase_4.event', $even->id)}}">
+                                 {{ csrf_field() }}
+                                <button type="submit" id="p3" class="btn btn-success" disabled>Planning</button>
+                             </form>
+                            
+                            <div class="terminer">
+                             <form method="POST" action="{{route('phase_des.event', $even->id)}}">
+                                 {{ csrf_field() }}
+                                <button type="submit" id="p4"  class="btn btn-danger" disabled>Terminer</button>
+                                 </form>
+                            </div>    
+                      
+                           
+                        </div>
+                     
+                         @endif
+                         <br><br><br>
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
-                      <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
+                      <button class="btn " style="background:#C92C2B; color:white;">Quitter</button>
                     </form>
                   </div>
                 </div>

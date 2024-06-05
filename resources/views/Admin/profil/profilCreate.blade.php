@@ -10,16 +10,20 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="col-12 grid-margin stretch-card">
+          <div class="bdc">
+            <h4 class="card-title"> <br>Ajouter un profil</h4>
+          </div>
+            <div class="col-12 grid-margin stretch-card" style="margin-top:-40px">
                 <div class="card">
-                  @if (session('message'))
+                  <div class="card-body">
+                  <h6> 
+                        @if (session('message'))
                         <div class="alert alert-success" role="alert">
                         {{ session('message') }}
                         </div>  
                         @endif
-
-                  <div class="card-body">
-                    <h4 class="card-title">Ajouter un profil </h4>
+                    </h6>
+                    
                     <p class="card-description">Remplissez ce formulaire pour créer un profil d'entreprise</p>
                     <form class="forms-sample"  action="{{route('profils.store')}}" method="post" enctype="multipart/form-data">
                           {{ csrf_field() }}
@@ -27,9 +31,12 @@
                         <label for="exampleInputName1">Libellé du profil : (<span class="red">*</span>)</label>
                         <input type="text" name="libelle" class="form-control" id="exampleInputName1" placeholder="Libellé du secteur d'activité">
                       </div>
-                    
+                     <?php 
+                            $even = DB::table('events')->where('status', '=', 1)->first();
+                       ?>
+                       <input class="form-control" value="{{$even->id}}" type="hidden" style="width:100%; height:50px; " name="event_id" placeholder="event">
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
-                      <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
+                      <a href="/profils" class="btn " style="background:#C92C2B; color:white">Quitter</a>
                     </form>
                   </div>
                 </div>

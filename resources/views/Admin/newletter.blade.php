@@ -10,7 +10,7 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-          <div class="bdc">
+          <div class="bdc" style="width:600px;">
             <h4 class="card-title"style="margin-left:30px;"> <br>Envoyer un mail aux participants de l’évènement</h4>
           </div>
             <div class="col-12 grid-margin stretch-card" style="margin-top:-40px">
@@ -25,23 +25,23 @@
                     </h6>
                     
                     
-                    <form class="forms-sample" action="{{route('secteuractivites.store')}}" method="post" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{route('newletters.messages')}}" method="post" enctype="multipart/form-data">
                           {{ csrf_field() }}
                       <div class="form-group">
                         <label for="exampleInputName1">Object : (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="libelle" id="exampleInputName1" placeholder="L'Objet du message">
+                        <input type="text" class="form-control" name="objet" id="exampleInputName1" placeholder="L'Objet du message">
                       </div>
                       <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Contennu du mail : (<span class="red">*</span>)</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                        <textarea class="form-control" name="contenu" id="exampleFormControlTextarea1" rows="6"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="formFileMultiple" class="form-label">Piece jointe</label>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                        <input class="form-control" name="piece" type="file" id="formFileMultiple" multiple>
                     </div>
                     <br><br>
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
-                      <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
+                      <a href="/homes" class="btn " style="background:#C92C2B; color:white">Quitter</a>
                     </form>
                   </div>
                 </div>

@@ -27,11 +27,11 @@
                       <div class="form-group">
                         <!--<label for="exampleInputName1">Format de l'activité : (<span class="red">*</span>)</label>
                         <input type="text" name="libelle" class="form-control" id="exampleInputName1" placeholder="Name">-->
-                        <label for="exampleInputName1">Topic : (<span class="red">*</span>)</label>
+                        <label for="exampleInputName1">Sujet : (<span class="red">*</span>)</label>
                         <input type="text" name="topic" class="form-control" id="exampleInputName1" placeholder="Name">
                       </div>
                       <div class="form-group">
-                        <label for="exampleSelectGender">start_time  (<span class="red">*</span>)</label>
+                        <label for="exampleSelectGender">Date  (<span class="red">*</span>)</label>
                     
                         <div class="">
                             <input type="date" name="start_time" class="form-control" placeholder="dd/mm/yyyy" />
@@ -43,8 +43,101 @@
   
                         <div class="">
                             <input type="number" name="duration" class="form-control" placeholder="Duration" />
-                            </div>
+                        </div>
                       </div>
+                      <?php
+                            //M.A.X B.I.R.D was here
+
+                            $traducteurs = DB::table('traducteurs')->get();
+                            
+                            $stakeholders = DB::table('intervenants')->get();
+                            
+                            $participants = DB::table('participants')->where('paneliste', '=', 1)->get();
+                            
+                            if($traducteurs){  
+                                
+                       ?>
+                       
+                       <div class="form-group">
+                           <p class="">Avez-vous besoin de traducteur ?</p>
+                            
+                            <?php 
+                            foreach($traducteurs as $traductor){
+                                $langue = '';
+                                foreach($languages as $language)
+                                    if($traductor->langue_id == $language->id)
+                                        $langue = $language->libelle_eng;
+                            ?> 
+                                <br>
+                                <div class="">
+                                   <label class="">
+                                        {{$traductor->prenom}} {{$traductor->nom}} : 🎤 {{$langue}} <input class="form-control checkmark checkbox" type="checkbox" id = "" name="traductors[]" value="{{$traductor->id}}">&nbsp;
+                                    </label>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                       </div>
+                      <?php
+                      
+                         }
+                         
+                         if($participants){
+                      ?>
+                       
+                       <div class="form-group">
+                           <p class="">Des intervennants à votre activité : Entreprise  ?</p>
+                           
+                            
+                            <?php 
+                            foreach($participants as $participant){
+                                $langue = '';
+                               foreach($languages as $language)
+                                    if($participant->langue_id == $language->id)
+                                        $langue = $language->libelle_eng;
+                            ?> 
+                                <br>
+                                <div class="">
+                                   <label class="">
+                                        {{$participant->prenom}} {{$participant->nom}} : 👤 {{$langue}} <input class="form-control checkmark checkbox" type="checkbox" id = "" name="participants[]" value="{{$participant->id}}">&nbsp;
+                                    </label>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                       </div>
+                       
+                       <?php
+                      
+                         }
+                         
+                         if($stakeholders){
+                      ?>
+                       
+                       <div class="form-group">
+                           <p class="">Des intervennants à votre activité  ?</p>
+                           
+                            
+                            <?php 
+                            foreach($stakeholders as $stakeholder){
+                                $langue = '';
+                                foreach($types as $type)
+                                    if($stakeholder->type_id == $type->id)
+                                        $typo = $type->libelle;
+                            ?> 
+                                <br>
+                                <div class="">
+                                   <label class="">
+                                        {{$stakeholder->prenom}} {{$stakeholder->nom}} : 👤 {{$typo}} <input class="form-control checkmark checkbox" type="checkbox" id = "" name="stakeholders[]" value="{{$stakeholder->id}}">&nbsp;
+                                    </label>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                       </div>
+                      <?php
+                            }
+                      ?>
 
                       <div class="row">
                         <div class="form-group col-md-6">
@@ -53,6 +146,10 @@
                             <input type="time" name="heure_debut" class="form-control" placeholder="dd/mm/yyyy" />
                             </div>
                         </div>
+                         <?php 
+                            $even = DB::table('events')->where('status', '=', 1)->first();
+                       ?>
+                       <input class="form-control" value="{{$even->id}}" type="hidden" style="width:100%; height:50px; " name="event_id" placeholder="event">
                         <div class="form-group col-md-6">
                             <label class="col-form-label">Heure de fin : (<span class="red">*</span>)</label>
                             <div class="">
@@ -62,7 +159,7 @@
                     </div>
 
                     <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
-                      <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
+                      <a href="/activites" class="btn " style="background:#C92C2B; color:white">Quitter</a>
                     </form>
                   </div>
                 </div>

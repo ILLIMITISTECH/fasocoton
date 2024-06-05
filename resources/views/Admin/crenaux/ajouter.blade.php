@@ -27,33 +27,58 @@
                     <p class="card-description">Remplissez ce formulaire pour créer un crenaux</p>
                     <form action="{{route('creneaux.store')}}" method="post" class="forms-sample" enctype="multipart/form-data">
                           {{ csrf_field() }}   
+                          
+                    <div class="form-group">
+                        <label for="exampleInputName1">Salle (<span class="red">*</span>)</label>
+                        <select class="form-control" name="sale_id" id="stade_entreprise">
+                            @foreach($salles as $salle)  
+                            <option value="{{$salle->id}}">{{$salle->libelle}}</option>
+                            @endforeach
+                            </select>
+                      </div>
                       <div class="form-group">
                         <label for="website">Table</label>
-                        <select class="form-control" name="table_id" id="table_id">
-                            @foreach($table as $tables)  
-                            <option value="table_id">{{$tables->libelle}}</option>
+                        <select class="form-control" name="libelle_t" id="table_id">
+                            @foreach($tables as $table)  
+                            <option value="{{$table->libelle}}">{{$table->libelle}}</option>
                             @endforeach
                             </select>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Salle (<span class="red">*</span>)</label>
-                        <select class="form-control" name="salle_id" id="stade_entreprise">
-                            @foreach($salle as $salles)  
-                            <option value="salle_id">{{$salles->libelle}}</option>
-                            @endforeach
-                            </select>
+                        <label for="exampleInputName1">Sujet : (<span class="red">*</span>)</label>
+                        <input type="text" name="topic" class="form-control" id="exampleInputName1" placeholder="Name">
                       </div>
-                      <div class="form-group">
+                     
+                      <!--<div class="form-group">
                         <label for="exampleInputName1">Date: (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="date" placeholder="Name">
+                        <input type="text" class="form-control" name="date_c" placeholder="Name">
+                      </div> -->
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Date  (<span class="red">*</span>)</label>
+                    
+                        <div class="">
+                            <input type="date" name="start_time" class="form-control" placeholder="dd/mm/yyyy" />
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Duration  (<span class="red">*</span>)</label>
+  
+                        <div class="">
+                            <input type="number" name="duration" class="form-control" placeholder="Duration" />
+                            </div>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputName1">Heure de début: (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="heure_debut" placeholder="Name">
+                        <input type="time" class="form-control" name="heure_deb" placeholder="Name">
                       </div><div class="form-group">
                         <label for="exampleInputName1">Heure de fin: (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="heure_fin" placeholder="Name">
+                        <input type="time" class="form-control" name="heure_fin" placeholder="Name">
                       </div>
+                       <?php 
+                            $even = DB::table('events')->where('status', '=', 1)->first();
+                       ?>
+                       <input class="form-control" value="{{$even->id}}" type="hidden" style="width:100%; height:50px; " name="event_id" placeholder="event">
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
                       <button class="btn " style="background:#C92C2B; color:white">Quitter</button>
                     </form>

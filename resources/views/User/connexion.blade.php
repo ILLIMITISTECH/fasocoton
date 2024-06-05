@@ -14,12 +14,12 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Head-->
 	<head><base href="">
 		<meta charset="utf-8" />
-		<title>OptiEvent| Connexion</title>
+		<title>OptiEvennnnt| Connexion</title>
 		<meta name="description" content="Rider admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
 		<meta name="keywords" content="Rider, bootstrap, bootstrap 5, dmin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
 		<link rel="canonical" href="Https://preview.keenthemes.com/rider-free" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="{{asset('User/assets/media/optieventFavIcon.png')}}" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -34,6 +34,7 @@ License: For each use you must have a valid license purchased only from above li
 		<!--begin::Main-->
 		<div class="d-flex flex-column flex-root">
 			<div class="page d-flex flex-row flex-column-fluid">
+			     @include('User/sideInscription')
                 <div class="col-5 left-part">
                     <div class="form-head mt-5">
                         <div class="text-center">
@@ -52,47 +53,52 @@ License: For each use you must have a valid license purchased only from above li
                        {{ csrf_field() }}
                     
                         <div class="mb-10">
-                            <label for="exampleFormControlInput1" class="required form-label">Adresse Email  / Email Address : </label>
-                            <input type="email" name="email" class="form-control" placeholder="Entrer l'adresse mail"/>
+                            <label for="exampleFormControlInput1" class="required form-label">{{__('Email Address')}}: </label>
+                             <input id="email" type="email" placeholder="Entrer l'adresse mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         </div>
                         <div class="mb-10">
-                            <label for="exampleFormControlInput1" class="required form-label">Mot de passe  / Password : </label>
-                            <input type="password" name="password" class="form-control" placeholder="Entrer le mot de passe"/>
+                            <label for="exampleFormControlInput1" class="required form-label">{{__('Password')}} : </label>
+                           <input id="password" placeholder="Entrer le mot de passe" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                
+                                 <h6 style="margin-top: 5px;"> 
+                        @if (session('messages'))
+                        <div class="alert alert-danger" role="alert">
+                        {{ session('messages') }}
+                        </div>  
+                        @endif
+                    </h6>
                         </div>
                        
                        
-                        <div class="mb-10">
-                            <label for="exampleFormControlInput1" class="form-label">Code évènement / event code : </label>
-                            <input type="text" name="code_event" value ="RAF 2022" class="form-control" placeholder="Numéro de téléphone"/>
-                        </div>
+                        <!--<div class="mb-10">-->
+                        <!--    <label for="exampleFormControlInput1" class="form-label">Code évènement / event code : </label>-->
+                        <!--    <input type="text" name="code_event" value ="RAF 2022" class="form-control" placeholder="Numéro de téléphone"/>-->
+                        <!--</div>-->
                         <hr>
-                        <div class="mb-10 form-check form-check-custom form-check-solid">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Se souvenir de moi / Remember me
-                            </label>
-                        </div>
-                        <button class="btn btn-violet">Connexion</button>
+                        <!--<div class="mb-10 form-check form-check-custom form-check-solid">-->
+                        <!--    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>-->
+                        <!--    <label class="form-check-label" for="flexCheckDefault">-->
+                        <!--        Se souvenir de moi / Remember me-->
+                        <!--    </label>-->
+                        <!--</div>-->
+                        <button class="btn btn-violet">{{__('Log in')}}</button>
                        </form>
                        <div class="text-center">
-                        Vous n'avez pas de compte ? <a class="orange-link" href="/inscriptions">Inscrivez-vous maintenant !</a>
+                        {{__('Don't have an account?')}} <a class="orange-link" href="/choice"> {{__('Register now!')}}</a>
                         </div>
                     </div>        
-                </div>
-                <div class="col-7 right-part">
-                    <div class="adspace-head mt-5">
-                        <div class="text-center">
-                            <img  class ="logo-client" src="{{asset('User/assets/media/logos/logo-raf.png')}}" alt="">
-                        </div>
-                        <div class="adspace-body">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-1.jpeg')}}" alt="pub">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-2.jpeg')}}" alt="">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-3.jpeg')}}" alt="">
-                        </div>
-                        <div class="adspace-footer">
-
-                        </div>
-                    </div>
                 </div>
 			</div>
 		</div>

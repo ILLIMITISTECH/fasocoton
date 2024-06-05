@@ -11,7 +11,19 @@
         <div class="main-panel">
           <div class="content-wrapper">
           <div class="bd">
-            <h4 class="card-title"style="margin-left:30px;"> <br>Liste des secteurs d'activités de l'évènement "Event_Name"</h4>
+              <?php
+                         
+                        $evens = DB::table('events')->get();
+                        ?>
+                        @foreach($evens as $even)
+                        @if($even->status == 1)
+             <h4 class="card-title"style="margin-left:30px;"> <br>Liste des secteurs d'activités de l'évènement {{$even->nom_event_fr}}</h4>
+                      @else
+                      
+                      <p></p>
+                                            @endif
+
+                      @endforeach
           </div>
             <div class="row"style="margin-top:-40px">
                 <div class="col-12 grid-margin">
@@ -38,7 +50,7 @@
                               <td class="text-center"> 
                                  <a href="{{route('secteuractivites.edit', $secteur->id)}}"class="btn  btn-sm"style="background:#23B40B;color:white" type="button">
                                     <i class="bi bi-pencil"></i>
-                                   </a> 
+                                   </a><br><br> 
                                     <form action="{{route('secteuractivites.destroy', $secteur->id)}}" method="post">
                                       {{ csrf_field() }}
                                       @method('DELETE')

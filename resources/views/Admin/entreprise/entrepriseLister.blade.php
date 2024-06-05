@@ -12,8 +12,20 @@
         <div class="main-panel">
           <div class="content-wrapper">
           <div class="bd">
-            <h4 class="card-title"style="margin-left:30px;"> <br>Liste des entreprises inscrites à "Event_Name"</h4>
-          </div>
+               <?php
+                         
+                        $evens = DB::table('events')->get();
+                        ?>
+                        @foreach($evens as $even)
+                        @if($even->status == 1)
+             <h4 class="card-title"style="margin-left:30px;"> <br>Liste des entreprises inscrites à {{$even->nom_event_fr}} : {{count($entreprises)}}</h4>
+                      @else
+                      
+                      <p></p>
+                                            @endif
+
+                      @endforeach
+                      </div>
             <div class="row"style="margin-top:-40px;">
                 <div class="col-12 grid-margin">
                   <div class="card">
@@ -34,7 +46,7 @@
                               <th> Pays</th>
                               <th> Secteur d'activités</th>
                               <th> Profil</th>
-                              <th> Participants</th>
+                              <!--<th> Participants</th>-->
                               <th> Point focal</th>
                               <th class="text-center"> Options</th>
                             </tr>
@@ -44,22 +56,23 @@
                             <tr>
                                 
                                 <td>{{$entreprise->nom_entreprise}}</td>
-                                <td>{{$entreprise->pays_id}}</td>
-                                <td>{{$entreprise->secteur_activite_id}}</td>
-                                <td>{{$entreprise->profil_id}}</td>
-                                <td>{{$entreprise->participant_id}}</td>
+                                <td>{{$entreprise->pays}}</td>
+                                <td>{{$entreprise->secteur_a}} - {{$entreprise->secteur_b}} - {{$entreprise->secteur_c}}</td>
+                                <td>{{$entreprise->profile_entreprise_a}} - {{$entreprise->profile_entreprise_b}} - {{$entreprise->profile_entreprise_c}}</td>
+                                
                                 <td> </td>
 
-                                <td class="text-center"> 
-                                <a href="{{route('entreprises.edit', $entreprise->id)}}">
-                                <button type="button" class="btn btn-sm "style="background:#F49800;color:white" ><i class="bi bi-gear-fill"></i></i></button>
-                              </a>
+                                <td class="text-center option-column"> 
+                                
+                              <a href="{{route('entreprises.edit', $entreprise->id)}}">
                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
+                            </a>
                                 <form action="{{route('entreprises.destroy', $entreprise->id)}}" method="post">
                                   {{ csrf_field() }}
                                   @method('DELETE')
-                                <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                                <button type="submit" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
                                 </form> 
+                               
                               </td>
                             </tr>
                             @endforeach

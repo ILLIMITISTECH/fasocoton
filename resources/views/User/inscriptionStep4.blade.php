@@ -9,7 +9,7 @@
 		<meta name="keywords" content="Rider, bootstrap, bootstrap 5, dmin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
 		<link rel="canonical" href="Https://preview.keenthemes.com/rider-free" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="{{asset('User/assets/media/optieventFavIcon.png')}}" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -89,15 +89,15 @@
                         </div>  
 					 </div>   
                 </div>
-                <div class="col-6 right-part">
+                 <div class="col-7 right-part">
                     <div class="adspace-head mt-5">
                         <div class="text-center">
-                            <img  class ="logo-client" src="{{asset('User/assets/media/logos/logo-raf.png')}}" alt="">
+                            <img  class ="logo-client" src="{{asset('User/assets/media/sicot-white.png')}}" alt="">
                         </div>
                         <div class="adspace-body">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-1.jpeg')}}" alt="pub">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-2.jpeg')}}" alt="">
-                            <img class ="publicite" src="{{asset('User/assets/media/publicite/image-pub-3.jpeg')}}" alt="">
+                            <img class ="publicite" src="{{asset('User/assets/media/sicot-pub-1.png')}}" alt="pub">
+                            <img class ="publicite" src="{{asset('User/assets/media/sicot-pub-2.png')}}" alt="">
+                            <img class ="publicite" src="{{asset('User/assets/media/sicot-pub-3.png')}}" alt="">
                         </div>
                         <div class="adspace-footer">
 

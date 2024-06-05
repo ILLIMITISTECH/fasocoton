@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Auth;
+use App\Models\Hotel;
 
 class HotelController extends Controller
 {
@@ -14,6 +17,9 @@ class HotelController extends Controller
     public function index()
     {
         //
+         $hotels = DB::table('hotels')->get();
+
+        return view('Admin/hotel.hotelLister', compact('hotels'));
     }
 
     /**
@@ -24,6 +30,20 @@ class HotelController extends Controller
     public function create()
     {
         //
+         return view('Admin/hotel.hotelCreate');
+    }
+    
+     public function listehotel()
+    {
+        //
+         //$hotels = DB::table('hotels')->get(); 
+         return view('User.listeHotel');
+    }
+    public function listehotele()
+    {
+        //
+         //$hotels = DB::table('hotels')->get(); 
+         return view('User.listeHotel3');
     }
 
     /**
@@ -35,6 +55,19 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         //
+        $message = 'hotel ajouté avec succés';
+        
+
+        $hotels = new Hotel;
+        $hotels->nom_hotel = $request->get('nom_hotel');
+        $hotels->email_hotel = $request->get('email_hotel');
+        $hotels->type_hotel = $request->get('type_hotel');
+        $hotels->tel_hotel = $request->get('tel_hotel');
+        $hotels->site_hotel = $request->get('site_hotel');
+        $hotels->details_hotel = $request->get('details_hotel');
+        $hotels->save();
+       
+        return back()->with(['message' => $message]);
     }
 
     /**
@@ -57,6 +90,9 @@ class HotelController extends Controller
     public function edit($id)
     {
         //
+        $hotel = hotel::find($id);
+
+        return view('Admin/hotel.hotelEdit', compact('hotel'));
     }
 
     /**
@@ -69,6 +105,17 @@ class HotelController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $message = 'hotel modifié';
+        $hotels = hotel::find($id);
+        $hotels->nom_hotel = $request->get('nom_hotel');
+        $hotels->email_hotel = $request->get('email_hotel');
+        $hotels->type_hotel = $request->get('type_hotel');
+        $hotels->tel_hotel = $request->get('tel_hotel');
+        $hotels->site_hotel = $request->get('site_hotel');
+        $hotels->details_hotel = $request->get('details_hotel');
+        $hotels->update();
+       
+        return redirect('/hotels')->with(['message' => $message]);
     }
 
     /**
@@ -80,5 +127,9 @@ class HotelController extends Controller
     public function destroy($id)
     {
         //
+        $hotels = Hotel::find($id);
+        $hotels->delete();
+
+        return back()->with('info', "Hotel supprimée dans la base de donnée.");
     }
 }

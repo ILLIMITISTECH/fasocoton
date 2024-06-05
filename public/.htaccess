@@ -1,3 +1,5 @@
+
+RewriteOptions inherit
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
@@ -19,3 +21,29 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+RewriteCond %{HTTP_HOST} ^collaboratis\.optievent\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.collaboratis\.optievent\.com$
+RewriteRule ^/?$ "http\:\/\/collaboratis\.com" [R=301,L]
+RewriteCond %{HTTP_HOST} ^demo\-collaboratis\.optievent\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.demo\-collaboratis\.optievent\.com$
+RewriteRule ^/?$ "https\:\/\/demo\-collaboratis\.optievent\.com\/connexion" [R=301,L]
+RewriteCond %{HTTP_HOST} ^illimitis\.collaboratis\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.illimitis\.collaboratis\.com$
+RewriteRule ^/?$ "https\:\/\/illimitis\.collaboratis\.com\/connexion" [R=301,L]
+RewriteCond %{HTTP_HOST} ^acame\-demo\.collaboratis\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.acame\-demo\.collaboratis\.com$
+RewriteRule ^/?$ "https\:\/\/acame\-demo\.collaboratis\.com\/connexion" [R=301,L]
+RewriteCond %{HTTP_HOST} ^newversioncollaboratis\.collaboratis\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.newversioncollaboratis\.collaboratis\.com$
+RewriteRule ^/?$ "https\:\/\/newversioncollaboratis\.collaboratis\.com\/connexion" [R=301,L]
+RewriteCond %{HTTP_HOST} ^feedback\.collaboratis\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.feedback\.collaboratis\.com$
+RewriteRule ^/?$ "https\:\/\/feedback\.collaboratis\.com\/connexion" [R=301,L]
+RewriteCond %{HTTP_HOST} ^dev\.collaboratis\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.dev\.collaboratis\.com$
+RewriteRule ^/?$ "https\:\/\/dev\.collaboratis\.com\/connexion" [R=301,L]
+RewriteCond %{HTTP_HOST} ^odata\.collaboratis\.com$
+RewriteRule ^/?$ "https\:\/\/odata\.collaboratis\.com\/connexion" [R=301,L]
+RewriteCond %{HTTP_HOST} ^fasocoton\.optievent\.xyz$
+RewriteRule ^/?$ "http\:\/\/fasocoton\.optievent\.xyz\/connexion" [R=301,L]
+

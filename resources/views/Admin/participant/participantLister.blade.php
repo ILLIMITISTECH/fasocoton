@@ -6,12 +6,24 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-       @include('Admin/Dashboard.sidebarUser')
+       @include('Admin/Dashboard.sideBarUser')
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
           <div class="bd">
-            <h4 class="card-title"style="margin-left:30px;"> <br>Liste des participants inscrites à "Event_Name"</h4>
+              <?php
+                         
+                        $evens = DB::table('events')->get();
+                        ?>
+                        @foreach($evens as $even)
+                        @if($even->status == 1)
+             <h4 class="card-title"style="margin-left:30px;"> <br>Liste des participants inscrites au {{$even->nom_event_fr}}</h4>
+                      @else
+                      
+                      <p></p>
+                                            @endif
+
+                      @endforeach
           </div>
             <div class="row"style="margin-top:-40px;">
                 <div class="col-12 grid-margin">
@@ -45,23 +57,36 @@
                             <tr> 
                                 <td>{{$participants->nom}}</td>
                                 <td>{{$participants->prenom}}</td>
-                                <td>{{$participants->entreprise_id}}</td>
+                                <?php $entre = DB::table('entreprises')->where('id', $participants->entreprise_id)->first() ?>
+                                <td>{{ ($entre) ? $entre->nom_entreprise : '--'}}</td>
+                                @if($participants->fonction)
                                 <td>{{$participants->fonction}}</td>
+                                @else
+                                 <td>--</td>
+                                @endif
                                 <td>{{$participants->email}}</td>
-                                <td>{{$participants->pays_id}}</td>
+                                 <?php $pays = DB::table('pays')->where('id', $participants->pays_id)->first() ?>
+                                <td>{{ ($pays) ? $pays->libelle_fr : '--'}}</td>
                                 <td>{{$participants->tel_part}}</td>
-                                <td>{{$participants->langue_id}}</td>
-                                <td>{{$participants->presence}}</td>
+                                 <?php $lang = DB::table('langues')->where('id', $participants->langue_id)->first() ?>
+                                <td>{{ ($lang) ? $lang->libelle_eng : '--'}}</td>
+                                @if($participants->presence == 1)
+                                <td>En présentiel</td>
+                                @elseif($participants->presence == 2)
+                                 <td>En ligne</td>
+                                 @else
+                                 <td>--</td>
+                                @endif
                                 <td class="text-center"> 
                                 
                                 <a href="{{route('participants.edit', $participants->id)}}">
-                                <button type="button" class="btn btn-sm "style="background:#F49800;color:white" ><i class="bi bi-gear-fill"></i></i></button>
-                              </a>
                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
+                              </a><br><br>
+                                
                                 <form action="{{route('participants.destroy', $participants->id)}}" method="post">
                                   {{ csrf_field() }}
                                   @method('DELETE')
-                                <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                                <button type="submit" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
                                 </form>
                               </td>
                             </tr>

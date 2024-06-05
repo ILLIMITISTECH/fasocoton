@@ -22,62 +22,39 @@
                         @endif
                   <div class="card-body">
                     
-                    <p class="card-description">Remplissez ce formulaire pour ajouter un participant</p>
-                    <form class="forms-sample"  action="{{route('participants.store')}}" method="post" enctype="multipart/form-data">
+                    <p class="card-description">Remplissez ce formulaire pour modifier un participant</p>
+                    <form class="forms-sample"  action="{{route('participants.update', $participant->id)}}" method="post" enctype="multipart/form-data">
                           {{ csrf_field() }}
+                          @method('put')
                       <div class="form-group">
-                        <label for="exampleInputName1">Nom  (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="nom" id="exampleInputName1" placeholder="Name">
+                        <label for="exampleInputName1">Nom</label>
+                        <input type="text" class="form-control" value="{{$participant->nom}}" name="nom" id="exampleInputName1" placeholder="Name">
                       </div>  
                       <div class="form-group">
-                        <label for="website">Prénoms (<span class="red">*</span>)</label>
-                        <input type="text" name="prenom" class="form-control" id="website" placeholder="Site Web">
+                        <label for="website">Prénom</label>
+                        <input type="text" name="prenom" class="form-control" value="{{$participant->prenom}}" id="website" placeholder="Site Web">
                       </div>
                       <div class="form-group">
-                        <label for="website">Email (<span class="red">*</span>)</label>
-                        <input type="email" name="email" class="form-control" id="website" placeholder="example@...">
+                        <label for="website">Email</label>
+                        <input type="email" name="email" value="{{$participant->email}}" class="form-control" id="website" placeholder="example@...">
                       </div>
                     
-                          <div class="row">
-                              <div class="form-group col-md-6">
-                                  <label for="exampleSelectGender">Entreprise du Participant</label>
-                                  <select class="form-control" name="entreprise_id" id="stade_entreprise">
-                                  @foreach($entreprise as $entre)  
-                                  <option value="entreprise_id">{{$entre->nom_entreprise}}</option>
-                                  @endforeach
-                                  </select>
-                            </div>
+                         
                               <div class="form-group col-md-6">
                                 <label for="exampleSelectGender">Fonction du participant</label>
-                                <input type="text" name="fonction" class="form-control" id="fonction" placeholder="Site Web">
+                                <input type="text" name="fonction" value="{{$participant->fonction}}" class="form-control" id="fonction" placeholder="Site Web">
                               </div>
                           
                            <div class="form-group col-md-6">
                             <label for="exampleSelectGender">Téléphone du participant</label>
-                            <input type="text" name="tel_part" class="form-control" id="777....." placeholder="Site Web">
+                            <input type="text" name="tel_part" value="{{$participant->tel_part}}" class="form-control" id="777....." placeholder="Site Web">
                           </div>
 
 
-                          <div class="form-group col-md-6">
-                            <label for="exampleInputPassword1">Langue : (<span class="red">*</span>)</label>
-                            <select class="form-control" name="langue_id" id="stade_entreprise">
-                            @foreach($langue as $lang)  
-                            <option value="langue_id">{{$lang->libelle_eng}} {{$lang->libelle_fr}}</option>
-                            @endforeach
-                            </select>
-                          </div>
-
-                         <div class="form-group col-md-6">
-                            <label for="exampleInputConfirmPassword1">Pays : (<span class="red">*</span>)</label>
-                            <select class="form-control" name="pays_id" id="stade_entreprise">
-                            @foreach($pays as $pay)  
-                            <option value="pays_id">{{$pay->libelle_fr}} {{$pay->libelle_en}}</option>
-                            @endforeach
-                            </select><br><br>
-                        </div>
+                       
                         <div class="form-group col-md-6">
-                            <label for="exampleInputConfirmPassword1">Presence : (<span class="red">*</span>)</label>
-                            <input type="tinyint" name="presence" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
+                            <label for="exampleInputConfirmPassword1">Presence : </label>
+                            <input type="tinyint" name="presence" value="{{$participant->presence}}" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
                         </div>
                         </div>  
                         <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>

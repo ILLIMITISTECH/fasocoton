@@ -18,33 +18,34 @@
                 <div class="card">
                   <div class="card-body">
                   <h6> 
-                        @if (session('message'))
+                        @if (session('messagee'))
                         <div class="alert alert-success" role="alert">
-                        {{ session('message') }}
+                        {{ session('messagee') }}
                         </div>  
                         @endif
                     </h6>
                     
-                    <p class="card-description">Remplissez ce formulaire pour mpdifier les informations d'une entreprise</p>
-                    <form action="{{route('events.store')}}" method="post" class="forms-sample" enctype="multipart/form-data">
+                    <p class="card-description">Remplissez ce formulaire pour modifier les informations d'une entreprise</p>
+                    <form action="{{route('entreprises.update', $entreprises->id)}}" method="post" class="forms-sample" enctype="multipart/form-data">
                           {{ csrf_field() }}
-                      <div class="form-group">
-                        <label for="exampleInputName1">Nom de l'entreprise: (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="nom_event_fr" placeholder="Name">
-                      </div>
-                     
-                      <div class="form-group">
-                        <label for="website">Pays</label>
-                        <input type="link" class="form-control" id="website" placeholder="Pays">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Secteur d'activité : (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" name="libelle" id="exampleInputName1" placeholder="Libellé du secteur d'activité">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Profil : (<span class="red">*</span>)</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Libellé du profil">
-                      </div>
+                         @method('put')
+                     <div class="mb-10">
+                                                <label for="exampleFormControlInput1" class=" form-label">Nom Entreprise :</label>
+                                                <input type="text" name="nom_entreprise" value="{{$entreprises->nom_entreprise}}" class="form-control form-control-solid" placeholder="Nonguierma"/>
+                                            </div>
+                                            <div class="mb-10">
+                                                <label for="exampleFormControlInput1" class=" form-label">Site web :</label>
+                                                <input type="text" name="site" value="{{$entreprises->site}}" class="form-control form-control-solid" placeholder="Votre site web"/>
+                                            </div>
+                                             <div class="mb-10">
+                                                <label for="exampleFormControlInput1" class=" form-label">Slogan :</label>
+                                                <input type="text" name="slogan" value="{{$entreprises->slogan}}" class="form-control form-control-solid" placeholder="Votre slogan"/>
+                                            </div>
+                                            <div class="mb-10">
+                                                <label for="exampleFormControlInput1" class=" form-label">Numéro de Téléphone :</label>
+                                                <input type="text" name="tel_entreprise" value="{{$entreprises->tel_entreprise}}" class="form-control form-control-solid" placeholder="00221 782967825"/>
+                                            </div>
+                                            
                   
                       <button type="submit" class="btn mr-2"style="background:#F49800; color:white">Valider</button>
                       <button class="btn " style="background:#C92C2B; color:white">Quitter</button>

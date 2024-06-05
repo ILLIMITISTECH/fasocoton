@@ -6,12 +6,24 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-       @include('Admin/Dashboard.sidebarUser')
+       @include('Admin/Dashboard.sideBarUser')
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
           <div class="bd">
-            <h4 class="card-title"style="margin-left:30px;"> <br>Liste des facilitateurs inscrites à "Event_Name"</h4>
+              <?php
+                         
+                        $evens = DB::table('events')->get();
+                        ?>
+                        @foreach($evens as $even)
+                        @if($even->status == 1)
+             <h4 class="card-title"style="margin-left:30px;"> <br>Liste des facilitateurs inscrites à {{$even->nom_event_fr}} : {{count($facilitateur)}}</h4>
+                      @else
+                      
+                      <p></p>
+                                            @endif
+
+                      @endforeach
           </div>
             <div class="row"style="margin-top:-40px;">
                 <div class="col-12 grid-margin">
@@ -32,7 +44,6 @@
                               <th> Nom</th>
                               <th> Prénom</th>
                               <th> Type</th>
-                              <th> Langue</th>
                               <th> Email</th>
                               <th> Téléphone</th>
                               <th class="text-center"> Options</th>
@@ -45,22 +56,24 @@
                                 
                                 <td>{{$facilitateurs->nom}}</td>
                                 <td>{{$facilitateurs->prenom}}</td>
-                                <td>{{$facilitateurs->type_id}}</td>
-                                <td>{{$facilitateurs->langue_id}}</td>
+                                @php $type = DB::table('types')->where('id', $facilitateurs->type_id)->first(); @endphp
+                                <td>{{ ($type) ? $type->libelle : '--'}}</td>
                                 <td>{{$facilitateurs->email}}</td>
                                 <td>{{$facilitateurs->phone}}</td>
+                                <div class ="option-column">
                                 <td class="text-center"> 
                                 
                                 <a href="{{route('facilitateurs.edit', $facilitateurs->id)}}">
-                                <button type="button" class="btn btn-sm "style="background:#F49800;color:white" ><i class="bi bi-gear-fill"></i></i></button>
-                              </a>
-                                <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
+                                 <button type="button" class="btn  btn-sm"style="background:#23B40B;color:white"><i class="bi bi-pen-fill"></i></i></button>
+                                 </a>
                                 <form action="{{route('facilitateurs.destroy', $facilitateurs->id)}}" method="post">
                                   {{ csrf_field() }}
                                   @method('DELETE')
-                                <button type="button" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
+                                <button type="submit" class="btn  btn-sm"style="background:#C92C2B;color:white"><i class="bi bi-trash-fill"></i></button>  
                                 </form>
+                                
                               </td>
+                              </div>
                             </tr>
                             @endforeach
                           </tbody>
